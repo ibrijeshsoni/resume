@@ -466,6 +466,12 @@ ul.responsibility li:before {
   margin-right: 15px;
 }
 
-.side_Right .areaBox.skill td {
-  padding-right: 15px;
+.areaBox .grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.areaBox .list {
+  flex: 1 1 calc(33.333% - 10px); /* Adjust for 3 columns */
 }
