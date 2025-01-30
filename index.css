@@ -80,6 +80,7 @@ a:hover {
 
 .side_left .profile_name h1 strong {
   color: #0066DD;
+  font-weight: 200;
 }
 
 .side_left .profile_name h2 {
@@ -350,8 +351,21 @@ a:hover {
   background-color: #0066DD;
 }
 
+
+.side_Right .areaBox.skill .list.p-100 span::after {
+  left: 100%;
+}
+
+.side_Right .areaBox.skill .list.p-95 span::after {
+  left: 95%;
+}
+
 .side_Right .areaBox.skill .list.p-90 span::after {
   left: 90%;
+}
+
+.side_Right .areaBox.skill .list.p-85 span::after {
+  left: 85%;
 }
 
 .side_Right .areaBox.skill .list.p-80 span::after {
@@ -366,20 +380,40 @@ a:hover {
   left: 70%;
 }
 
+.side_Right .areaBox.skill .list.p-65 span::after {
+  left: 65%;
+}
+
 .side_Right .areaBox.skill .list.p-60 span::after {
   left: 60%;
+}
+
+.side_Right .areaBox.skill .list.p-55 span::after {
+  left: 55%;
 }
 
 .side_Right .areaBox.skill .list.p-50 span::after {
   left: 50%;
 }
 
+.side_Right .areaBox.skill .list.p-45 span::after {
+  left: 45%;
+}
+
 .side_Right .areaBox.skill .list.p-40 span::after {
   left: 40%;
 }
 
+.side_Right .areaBox.skill .list.p-35 span::after {
+  left: 35%;
+}
+
 .side_Right .areaBox.skill .list.p-30 span::after {
   left: 30%;
+}
+
+.side_Right .areaBox.skill .list.p-25 span::after {
+  left: 25%;
 }
 
 .side_left .boxArea.interests .box {
@@ -426,8 +460,12 @@ ul.responsibility li {
 ul.responsibility li:before {
   content: "\f0eb";
   font-family: "FontAwesome";
-  color: orange;
+  color: #0066dd;
   float: left;
   font-size: 1.5em;
   margin-right: 15px;
+}
+
+.side_Right .areaBox.skill td {
+  padding-right: 15px;
 }
