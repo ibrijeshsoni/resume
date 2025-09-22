@@ -303,6 +303,37 @@ a:hover {
   color: #0066DD;
 }
 
+.company-duration {
+  display: flex;
+  justify-content: space-between;
+}
+
+.experience-list {
+  background: #f9f9f9;       /* light background */
+  border: 1px solid #ddd;    /* border */
+  border-radius: 12px;       /* rounded corners */
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.experience-list hr {
+  /*   
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #4b6cb7, #182848);
+  margin: 10px 0;
+  border-radius: 5px;
+  */
+  /* border: none;
+  border-top: 3px double #4b6cb7;
+  height: 0;
+  margin: 10px 0; */
+  border: none;
+  border-top: 2px dashed #4b6cb7;
+  margin: 10px 0;
+}
+
 .side_Right .areaBox.experience .list {
   font-size: 16px;
   margin: 40px auto;
@@ -449,6 +480,8 @@ a:hover {
   
 ul.responsibility {
   list-style: none;
+  list-style-position: inside;
+  text-align: justify
 }
 
 ul.responsibility li {
