@@ -129,6 +129,7 @@ a:hover {
   margin: auto 40px 0 80px;
   letter-spacing: 0.5px;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .side_left .boxArea.contact .contentArea {
