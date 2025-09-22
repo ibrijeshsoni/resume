@@ -503,7 +503,7 @@ ul.responsibility li:before {
   display: inline-block;
   border-radius: 6px;
   padding: 8px 12px;
-  cursor: pointer;
+  /* cursor: pointer; */
   text-align: center;
   font-weight: 500;
 }
