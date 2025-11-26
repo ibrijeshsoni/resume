@@ -8,11 +8,54 @@
   font-family: "Montserrat", sans-serif;
 }
 
+:root {
+  --bg-body: #f0f0f0;
+  --bg-main: #fff;
+  --bg-sidebar: #E5F1FF;
+  --bg-card: #f9f9f9;
+  --bg-skill-card: #f9f9f9;
+
+  --text-primary: #444;
+  --text-heading: #0066DD;
+  --text-secondary: #333;
+  --text-light: #fff;
+
+  --border-color: #ddd;
+  --shadow-main: 0 0 30px rgba(0, 0, 0, 0.18);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  --accent-color: #0066DD;
+  --accent-yellow: #FFC107;
+  --link-project: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-body: #121212;
+  --bg-main: #1e1e1e;
+  --bg-sidebar: #252526;
+  --bg-card: #2d2d2d;
+  --bg-skill-card: #2d2d2d;
+
+  --text-primary: #e0e0e0;
+  --text-heading: #4da3ff;
+  --text-secondary: #ccc;
+  --text-light: #e0e0e0;
+
+  --border-color: #444;
+  --shadow-main: 0 0 30px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+  --accent-color: #4da3ff;
+  --link-project: #ffffff;
+}
+
 body {
   margin: 0px;
   padding: 0px;
   font-size: 14px;
-  color: #444;
+  color: var(--text-primary);
+  background-color: var(--bg-body);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 a {
@@ -31,11 +74,12 @@ a:hover {
   display: flex;
   flex-direction: row;
   width: 100%;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-main);
+  background-color: var(--bg-main);
 }
 
 .side_left {
-  background-color: #E5F1FF;
+  background-color: var(--bg-sidebar);
   width: 35%;
   padding: 30px;
 }
@@ -79,7 +123,7 @@ a:hover {
 }
 
 .side_left .profile_name h1 strong {
-  color: #0066DD;
+  color: var(--text-heading);
   font-weight: 200;
 }
 
@@ -106,7 +150,7 @@ a:hover {
 .side_left .boxArea .title span em {
   width: 50px;
   height: 50px;
-  background-color: #0066dd;
+  background-color: var(--accent-color);
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -156,7 +200,7 @@ a:hover {
 .side_left .boxArea.contact .contentArea .contact-list span em {
   width: 50px;
   height: 50px;
-  background-color: #0066dd;
+  background-color: var(--accent-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +219,7 @@ a:hover {
 }
 
 .side_left .boxArea.contact .contentArea .contact-list h3 a {
-  color: #444;
+  color: var(--text-primary);
 }
 
 .side_left .boxArea.education .title svg path {
@@ -255,7 +299,7 @@ a:hover {
 }
 
 .side_Right {
-  background-color: white;
+  background-color: var(--bg-main);
   padding: 20px 50px;
   width: calc(100% - 35%);
 }
@@ -284,7 +328,7 @@ a:hover {
 }
 
 .side_Right .profile_name h1 strong {
-  color: #0066DD;
+  color: var(--text-heading);
 }
 
 .side_Right .profile_name h2 {
@@ -310,26 +354,19 @@ a:hover {
 }
 
 .experience-list {
-  background: #f9f9f9;       /* light background */
-  border: 1px solid #ddd;    /* border */
-  border-radius: 12px;       /* rounded corners */
+  background: var(--bg-card);
+  /* light background */
+  border: 1px solid var(--border-color);
+  /* border */
+  border-radius: 12px;
+  /* rounded corners */
   padding: 15px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-card);
 }
 
+.skill-category hr,
 .experience-list hr {
-  /*   
-  border: none;
-  height: 2px;
-  background: linear-gradient(to right, #4b6cb7, #182848);
-  margin: 10px 0;
-  border-radius: 5px;
-  */
-  /* border: none;
-  border-top: 3px double #4b6cb7;
-  height: 0;
-  margin: 10px 0; */
   border: none;
   border-top: 2px dashed #4b6cb7;
   margin: 10px 0;
@@ -380,7 +417,7 @@ a:hover {
   width: 15px;
   height: 15px;
   border-radius: 50px;
-  background-color: #0066DD;
+  background-color: var(--accent-color);
 }
 
 
@@ -465,7 +502,7 @@ a:hover {
   display: block;
   margin: 20px auto;
   font-size: 16px;
-  color: #444;
+  color: var(--text-primary);
 }
 
 @media (max-width: 1023px) {
@@ -475,10 +512,10 @@ a:hover {
 }
 
 .cover {
-    background: #fff;
-    padding: 7px;
-  }
-  
+  background: transparent;
+  padding: 7px;
+}
+
 ul.responsibility {
   list-style: none;
   list-style-position: inside;
@@ -494,9 +531,30 @@ ul.responsibility li {
 ul.responsibility li:before {
   content: "\f0eb";
   font-family: "FontAwesome";
-  color: #0066dd;
+  color: var(--accent-color);
   float: left;
   font-size: 1.5em;
+  margin-right: 15px;
+}
+
+ul.info {
+  list-style: none;
+  list-style-position: inside;
+  text-align: justify
+}
+
+ul.info li {
+  padding: 10px;
+  justify-content: space-around;
+  /* border-bottom: 1px solid #333; */
+}
+
+ul.info li:before {
+  content: "\f005";
+  font-family: "FontAwesome";
+  color: var(--accent-yellow);
+  float: left;
+  font-size: 1em;
   margin-right: 15px;
 }
 
@@ -507,22 +565,26 @@ ul.responsibility li:before {
 }
 
 .areaBox .list {
-  flex: 1 1 calc(33.333% - 10px); /* Adjust for 3 columns */
+  flex: 1 1 calc(33.333% - 10px);
+  /* Adjust for 3 columns */
 }
 
 .skill-category {
-  background: #f9f9f9;       /* light background */
-  border: 1px solid #ddd;    /* border */
-  border-radius: 12px;       /* rounded corners */
+  background: var(--bg-skill-card);
+  /* light background */
+  border: 1px solid var(--border-color);
+  /* border */
+  border-radius: 12px;
+  /* rounded corners */
   padding: 15px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-card);
 }
 
 .skill-category h4 {
   margin-bottom: 10px;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-secondary);
 }
 
 .grid-container {
@@ -530,6 +592,7 @@ ul.responsibility li:before {
   flex-wrap: wrap;
   gap: 5px;
 }
+
 /* Common chip style */
 /* Base style */
 .skill-category .list {
@@ -580,139 +643,837 @@ ul.responsibility li:before {
 }
 
 /* --- Auto-generate tooltip content from class --- */
-.skill-category .list.p-10::after  { content: "10%"; }
-.skill-category .list.p-15::after  { content: "15%"; }
-.skill-category .list.p-20::after  { content: "20%"; }
-.skill-category .list.p-25::after  { content: "25%"; }
-.skill-category .list.p-30::after  { content: "30%"; }
-.skill-category .list.p-35::after  { content: "35%"; }
-.skill-category .list.p-40::after  { content: "40%"; }
-.skill-category .list.p-45::after  { content: "45%"; }
-.skill-category .list.p-50::after  { content: "50%"; }
-.skill-category .list.p-55::after  { content: "55%"; }
-.skill-category .list.p-60::after  { content: "60%"; }
-.skill-category .list.p-65::after  { content: "65%"; }
-.skill-category .list.p-70::after  { content: "70%"; }
-.skill-category .list.p-75::after  { content: "75%"; }
-.skill-category .list.p-80::after  { content: "80%"; }
-.skill-category .list.p-85::after  { content: "85%"; }
-.skill-category .list.p-90::after  { content: "90%"; }
-.skill-category .list.p-95::after  { content: "95%"; }
-.skill-category .list.p-100::after { content: "100%"; }
+.skill-category .list.p-10::after {
+  content: "10%";
+}
+
+.skill-category .list.p-15::after {
+  content: "15%";
+}
+
+.skill-category .list.p-20::after {
+  content: "20%";
+}
+
+.skill-category .list.p-25::after {
+  content: "25%";
+}
+
+.skill-category .list.p-30::after {
+  content: "30%";
+}
+
+.skill-category .list.p-35::after {
+  content: "35%";
+}
+
+.skill-category .list.p-40::after {
+  content: "40%";
+}
+
+.skill-category .list.p-45::after {
+  content: "45%";
+}
+
+.skill-category .list.p-50::after {
+  content: "50%";
+}
+
+.skill-category .list.p-55::after {
+  content: "55%";
+}
+
+.skill-category .list.p-60::after {
+  content: "60%";
+}
+
+.skill-category .list.p-65::after {
+  content: "65%";
+}
+
+.skill-category .list.p-70::after {
+  content: "70%";
+}
+
+.skill-category .list.p-75::after {
+  content: "75%";
+}
+
+.skill-category .list.p-80::after {
+  content: "80%";
+}
+
+.skill-category .list.p-85::after {
+  content: "85%";
+}
+
+.skill-category .list.p-90::after {
+  content: "90%";
+}
+
+.skill-category .list.p-95::after {
+  content: "95%";
+}
+
+.skill-category .list.p-100::after {
+  content: "100%";
+}
 
 /* Backend (Blue) */
-.skill-category:nth-of-type(1) .list.p-10  { background: #e3f2fd; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-15  { background: #d0e8fc; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-20  { background: #bbdefb; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-25  { background: #a6d2fa; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-30  { background: #90caf9; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-35  { background: #7bbef7; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-40  { background: #64b5f6; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-45  { background: #53aef4; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-50  { background: #42a5f5; color: #0d47a1; }
-.skill-category:nth-of-type(1) .list.p-55  { background: #369bf2; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-60  { background: #2196f3; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-65  { background: #1c85e1; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-70  { background: #1e88e5; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-75  { background: #1977d2; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-80  { background: #1565c0; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-85  { background: #104ea5; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-90  { background: #0d47a1; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-95  { background: #0c3c8f; color: #fff; }
-.skill-category:nth-of-type(1) .list.p-100 { background: #0b3c91; color: #fff; }
+.skill-category:nth-of-type(1) .list.p-10 {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-15 {
+  background: #d0e8fc;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-20 {
+  background: #bbdefb;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-25 {
+  background: #a6d2fa;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-30 {
+  background: #90caf9;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-35 {
+  background: #7bbef7;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-40 {
+  background: #64b5f6;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-45 {
+  background: #53aef4;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-50 {
+  background: #42a5f5;
+  color: #0d47a1;
+}
+
+.skill-category:nth-of-type(1) .list.p-55 {
+  background: #369bf2;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-60 {
+  background: #2196f3;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-65 {
+  background: #1c85e1;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-70 {
+  background: #1e88e5;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-75 {
+  background: #1977d2;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-80 {
+  background: #1565c0;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-85 {
+  background: #104ea5;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-90 {
+  background: #0d47a1;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-95 {
+  background: #0c3c8f;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(1) .list.p-100 {
+  background: #0b3c91;
+  color: #fff;
+}
 
 /* Frontend (Orange) */
-.skill-category:nth-of-type(2) .list.p-10  { background: #fff3e0; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-15  { background: #ffe9cc; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-20  { background: #ffe0b2; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-25  { background: #ffd699; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-30  { background: #ffcc80; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-35  { background: #ffb84d; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-40  { background: #ffb74d; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-45  { background: #ffa733; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-50  { background: #ff9800; color: #e65100; }
-.skill-category:nth-of-type(2) .list.p-55  { background: #fb8f00; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-60  { background: #fb8c00; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-65  { background: #f57c00; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-70  { background: #f57c00; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-75  { background: #ef6c00; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-80  { background: #ef6c00; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-85  { background: #e65100; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-90  { background: #e65100; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-95  { background: #bf360c; color: #fff;}
-.skill-category:nth-of-type(2) .list.p-100 { background: #bf360c; color: #fff;}
+.skill-category:nth-of-type(2) .list.p-10 {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-15 {
+  background: #ffe9cc;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-20 {
+  background: #ffe0b2;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-25 {
+  background: #ffd699;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-30 {
+  background: #ffcc80;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-35 {
+  background: #ffb84d;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-40 {
+  background: #ffb74d;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-45 {
+  background: #ffa733;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-50 {
+  background: #ff9800;
+  color: #e65100;
+}
+
+.skill-category:nth-of-type(2) .list.p-55 {
+  background: #fb8f00;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-60 {
+  background: #fb8c00;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-65 {
+  background: #f57c00;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-70 {
+  background: #f57c00;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-75 {
+  background: #ef6c00;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-80 {
+  background: #ef6c00;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-85 {
+  background: #e65100;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-90 {
+  background: #e65100;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-95 {
+  background: #bf360c;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(2) .list.p-100 {
+  background: #bf360c;
+  color: #fff;
+}
 
 /* Database (Green shades) */
-.skill-category:nth-of-type(3) .list.p-10  { background: #e8f5e9; color: #1b5e20; } /* Green 50 */
-.skill-category:nth-of-type(3) .list.p-15  { background: #d7f0da; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-20  { background: #c8e6c9; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-25  { background: #b6e0b8; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-30  { background: #a5d6a7; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-35  { background: #92cd94; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-40  { background: #81c784; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-45  { background: #6fbc72; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-50  { background: #66bb6a; color: #1b5e20; }
-.skill-category:nth-of-type(3) .list.p-55  { background: #57b25b; color: #fff; }
-.skill-category:nth-of-type(3) .list.p-60  { background: #4caf50; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-65  { background: #449d48; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-70  { background: #43a047; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-75  { background: #388e3c; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-80  { background: #2e7d32; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-85  { background: #27672a; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-90  { background: #1b5e20; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-95  { background: #134d19; color: #fff;}
-.skill-category:nth-of-type(3) .list.p-100 { background: #0d3c12; color: #fff;}
+.skill-category:nth-of-type(3) .list.p-10 {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+
+/* Green 50 */
+.skill-category:nth-of-type(3) .list.p-15 {
+  background: #d7f0da;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-20 {
+  background: #c8e6c9;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-25 {
+  background: #b6e0b8;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-30 {
+  background: #a5d6a7;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-35 {
+  background: #92cd94;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-40 {
+  background: #81c784;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-45 {
+  background: #6fbc72;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-50 {
+  background: #66bb6a;
+  color: #1b5e20;
+}
+
+.skill-category:nth-of-type(3) .list.p-55 {
+  background: #57b25b;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-60 {
+  background: #4caf50;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-65 {
+  background: #449d48;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-70 {
+  background: #43a047;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-75 {
+  background: #388e3c;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-80 {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-85 {
+  background: #27672a;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-90 {
+  background: #1b5e20;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-95 {
+  background: #134d19;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(3) .list.p-100 {
+  background: #0d3c12;
+  color: #fff;
+}
 
 /* Machine Learning (Teal shades) */
-.skill-category:nth-of-type(4) .list.p-10 { background: #e0f2f1; color: #004d40; }
-.skill-category:nth-of-type(4) .list.p-20 { background: #b2dfdb; color: #004d40; }
-.skill-category:nth-of-type(4) .list.p-30 { background: #80cbc4; color: #004d40; }
-.skill-category:nth-of-type(4) .list.p-40 { background: #4db6ac; color: #004d40;}
-.skill-category:nth-of-type(4) .list.p-50 { background: #26a69a; color: #004d40;}
-.skill-category:nth-of-type(4) .list.p-60 { background: #009688; color: #fff; }
-.skill-category:nth-of-type(4) .list.p-70 { background: #00897b; color: #fff; }
-.skill-category:nth-of-type(4) .list.p-80 { background: #00796b; color: #fff; }
-.skill-category:nth-of-type(4) .list.p-90 { background: #004d40; color: #fff; }
-.skill-category:nth-of-type(4) .list.p-100 { background: #002d25; color: #fff; }
+.skill-category:nth-of-type(4) .list.p-10 {
+  background: #e0f2f1;
+  color: #004d40;
+}
+
+.skill-category:nth-of-type(4) .list.p-20 {
+  background: #b2dfdb;
+  color: #004d40;
+}
+
+.skill-category:nth-of-type(4) .list.p-30 {
+  background: #80cbc4;
+  color: #004d40;
+}
+
+.skill-category:nth-of-type(4) .list.p-40 {
+  background: #4db6ac;
+  color: #004d40;
+}
+
+.skill-category:nth-of-type(4) .list.p-50 {
+  background: #26a69a;
+  color: #004d40;
+}
+
+.skill-category:nth-of-type(4) .list.p-60 {
+  background: #009688;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(4) .list.p-70 {
+  background: #00897b;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(4) .list.p-80 {
+  background: #00796b;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(4) .list.p-90 {
+  background: #004d40;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(4) .list.p-100 {
+  background: #002d25;
+  color: #fff;
+}
 
 /* Artificial Intelligence (Purple shades) */
-.skill-category:nth-of-type(5) .list.p-10  { background: #f3e5f5; color: #4a148c; }
-.skill-category:nth-of-type(5) .list.p-15  { background: #ead6f0; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-20  { background: #e1bee7; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-25  { background: #d6aae0; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-30  { background: #ce93d8; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-35  { background: #c17fcd; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-40  { background: #ba68c8; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-45  { background: #ab55bb; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-50  { background: #9c27b0; color: #4a148c;}
-.skill-category:nth-of-type(5) .list.p-55  { background: #8d24aa; color: #fff;}
-.skill-category:nth-of-type(5) .list.p-60  { background: #8e24aa; color: #fff}
-.skill-category:nth-of-type(5) .list.p-65  { background: #7b1fa2; color: #fff}
-.skill-category:nth-of-type(5) .list.p-70  { background: #6a1b9a; color: #fff}
-.skill-category:nth-of-type(5) .list.p-75  { background: #5e1690; color: #fff}
-.skill-category:nth-of-type(5) .list.p-80  { background: #4a148c; color: #fff}
-.skill-category:nth-of-type(5) .list.p-85  { background: #42127f; color: #fff}
-.skill-category:nth-of-type(5) .list.p-90  { background: #380f6d; color: #fff}
-.skill-category:nth-of-type(5) .list.p-95  { background: #2f0c5a; color: #fff}
-.skill-category:nth-of-type(5) .list.p-100 { background: #240946; color: #fff}
+.skill-category:nth-of-type(5) .list.p-10 {
+  background: #f3e5f5;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-15 {
+  background: #ead6f0;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-20 {
+  background: #e1bee7;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-25 {
+  background: #d6aae0;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-30 {
+  background: #ce93d8;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-35 {
+  background: #c17fcd;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-40 {
+  background: #ba68c8;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-45 {
+  background: #ab55bb;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-50 {
+  background: #9c27b0;
+  color: #4a148c;
+}
+
+.skill-category:nth-of-type(5) .list.p-55 {
+  background: #8d24aa;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(5) .list.p-60 {
+  background: #8e24aa;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-65 {
+  background: #7b1fa2;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-70 {
+  background: #6a1b9a;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-75 {
+  background: #5e1690;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-80 {
+  background: #4a148c;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-85 {
+  background: #42127f;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-90 {
+  background: #380f6d;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-95 {
+  background: #2f0c5a;
+  color: #fff
+}
+
+.skill-category:nth-of-type(5) .list.p-100 {
+  background: #240946;
+  color: #fff
+}
 
 /* Deep Learning (Red shades) */
-.skill-category:nth-of-type(6) .list.p-10  { background: #ffebee; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-15  { background: #ffd9dc; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-20  { background: #ffcdd2; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-25  { background: #ffb9c0; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-30  { background: #ef9a9a; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-35  { background: #e78989; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-40  { background: #e57373; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-45  { background: #e15f5f; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-50  { background: #ef5350; color: #4a0909; }
-.skill-category:nth-of-type(6) .list.p-55  { background: #f44336; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-60  { background: #e53935; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-65  { background: #d32f2f; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-70  { background: #c62828; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-75  { background: #b71c1c; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-80  { background: #a11919; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-85  { background: #8b1515; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-90  { background: #751111; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-95  { background: #600d0d; color: #fff; }
-.skill-category:nth-of-type(6) .list.p-100 { background: #4a0909; color: #fff; }
+.skill-category:nth-of-type(6) .list.p-10 {
+  background: #ffebee;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-15 {
+  background: #ffd9dc;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-20 {
+  background: #ffcdd2;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-25 {
+  background: #ffb9c0;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-30 {
+  background: #ef9a9a;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-35 {
+  background: #e78989;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-40 {
+  background: #e57373;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-45 {
+  background: #e15f5f;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-50 {
+  background: #ef5350;
+  color: #4a0909;
+}
+
+.skill-category:nth-of-type(6) .list.p-55 {
+  background: #f44336;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-60 {
+  background: #e53935;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-65 {
+  background: #d32f2f;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-70 {
+  background: #c62828;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-75 {
+  background: #b71c1c;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-80 {
+  background: #a11919;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-85 {
+  background: #8b1515;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-90 {
+  background: #751111;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-95 {
+  background: #600d0d;
+  color: #fff;
+}
+
+.skill-category:nth-of-type(6) .list.p-100 {
+  background: #4a0909;
+  color: #fff;
+}
+
+/* Language Category Styles */
+.language-category {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+.language-category .grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.language-category .list {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--accent-color);
+}
+
+.language-category .list strong {
+  font-weight: bold;
+}
+
+/* Language Proficiency Colors */
+.language-category .list.p-10 {
+  color: #64b5f6;
+}
+
+.language-category .list.p-20 {
+  color: #64b5f6;
+}
+
+.language-category .list.p-30 {
+  color: #42a5f5;
+}
+
+.language-category .list.p-40 {
+  color: #42a5f5;
+}
+
+.language-category .list.p-50 {
+  color: #2196f3;
+}
+
+.language-category .list.p-60 {
+  color: #1e88e5;
+}
+
+.language-category .list.p-70 {
+  color: #1977d2;
+}
+
+.language-category .list.p-80 {
+  color: #1565c0;
+}
+
+.language-category .list.p-90 {
+  color: #0d47a1;
+}
+
+.language-category .list.p-100 {
+  color: #0b3c91;
+}
+
+/* Tooltip for language-category */
+.language-category .list::after {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.language-category .list::before {
+  content: "";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent transparent;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.language-category .list:hover::after,
+.language-category .list:hover::before {
+  opacity: 1;
+}
+
+.language-category .list.p-10::after {
+  content: "10%";
+}
+
+.language-category .list.p-15::after {
+  content: "15%";
+}
+
+.language-category .list.p-20::after {
+  content: "20%";
+}
+
+.language-category .list.p-25::after {
+  content: "25%";
+}
+
+.language-category .list.p-30::after {
+  content: "30%";
+}
+
+.language-category .list.p-35::after {
+  content: "35%";
+}
+
+.language-category .list.p-40::after {
+  content: "40%";
+}
+
+.language-category .list.p-45::after {
+  content: "45%";
+}
+
+.language-category .list.p-50::after {
+  content: "50%";
+}
+
+.language-category .list.p-55::after {
+  content: "55%";
+}
+
+.language-category .list.p-60::after {
+  content: "60%";
+}
+
+.language-category .list.p-65::after {
+  content: "65%";
+}
+
+.language-category .list.p-70::after {
+  content: "70%";
+}
+
+.language-category .list.p-75::after {
+  content: "75%";
+}
+
+.language-category .list.p-80::after {
+  content: "80%";
+}
+
+.language-category .list.p-85::after {
+  content: "85%";
+}
+
+.language-category .list.p-90::after {
+  content: "90%";
+}
+
+.language-category .list.p-95::after {
+  content: "95%";
+}
+
+.language-category .list.p-100::after {
+  content: "100%";
+}
+
+/* Project Link Styles */
+.projects .experience-list a {
+  color: var(--link-project);
+  text-decoration: none;
+}
+
+.projects .experience-list a:hover {
+  color: var(--link-project);
+  text-decoration: underline;
+}
+
+/* Navigation Bar Styles */
+.page-nav {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.page-nav a {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.page-nav a:hover {
+  color: var(--accent-color);
+}
+
+.page-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s;
+}
+
+.page-nav a:hover::after {
+  width: 100%;
+}

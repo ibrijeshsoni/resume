@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="favicon_io _me/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="favicon_io _me/favicon-16x16.png" />
-<link rel="shortcut icon" href="favicon_io _me/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="favicon_io _me/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />  <title>Brijesh Soni - Fullstack Data Engineer</title>
+  <link rel="icon" type="image/png" href="favicon_io _me/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon_io _me/favicon-16x16.png" />
+  <link rel="shortcut icon" href="favicon_io _me/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io _me/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <title>Brijesh Soni - Fullstack Data Engineer</title>
   <!-- Link to your CSS file -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="index.css">
@@ -18,6 +19,67 @@
 </head>
 
 <body>
+  <button id="theme-toggle" aria-label="Toggle Dark Mode">
+    <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </button>
+
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const icon = toggleButton.querySelector('i');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark') {
+        icon.classList.remove('fa-moon-o');
+        icon.classList.add('fa-sun-o');
+      }
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      icon.classList.remove('fa-moon-o');
+      icon.classList.add('fa-sun-o');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      let theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        icon.classList.remove('fa-sun-o');
+        icon.classList.add('fa-moon-o');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        icon.classList.remove('fa-moon-o');
+        icon.classList.add('fa-sun-o');
+      }
+    });
+  </script>
+  <style>
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.1);
+    }
+  </style>
   <div class="shadowBox">
     <section class="main">
       <!-- leftSide -->
@@ -61,24 +123,16 @@
           </div>
           <div class="contentArea">
             <p>
-              Seasoned IT professional with 21+ years of experience spanning software development, system architecture, and leadership. 
-              Progressed from hands-on developer to leading teams of 15 engineers and managing international client projects. Expert in 
-              delivering scalable solutions, optimising business processes, and translating complex requirements into actionable results.
-               Known for fostering collaboration, driving innovation, and ensuring high-quality project delivery across diverse technologies.
-              <!--
-              With extensive expertise in Information Technology, I have consistently demonstrated a strong track record
-              of delivering innovative solutions that drive business process optimisation. My strategic decision-making,
-              grounded in comprehensive analysis, has consistently led to data-driven outcomes that align with
-              organisational goals. Known for exceptional communication skills, both written and verbal, I foster clear
-              and effective collaboration with diverse teams and stakeholders, ensuring seamless project execution. My
-              reputation is built on unwavering dependability, discretion, and a commitment to maintaining the highest
-              ethical standards, particularly in managing sensitive information. I am adept at overseeing complex
-              projects, balancing multiple technologies, and delivering results on time, ensuring that each initiative
-              contributes meaningfully to organisational success.
-              -->
-              <!--
-            To leverage my extensive experience and expertise as a Senior Software Engineer to contribute my experience. I am seeking a challenging role that allows me to utilize my leadership, analytical, and strategic thinking skills to drive business growth and achieve results. I want to join a team that values collaboration, innovation, and continuous improvement.          </p>
-            -->
+            <ul class="info">
+              <li>Directed teams of <strong>20+</strong> engineers while managing large, multi-country client
+                engagements.</li>
+              <li>Designed and delivered scalable enterprise systems that improved efficiency and reduced operational
+                overhead.</li>
+              <li>Streamlined development processes and turned strategic business needs into practical, high-value
+                solutions.</li>
+              <li>Worked closely with cross-functional groups to ensure timely, high -quality delivery across diverse
+                technologies.</li>
+            </ul>
             </p>
           </div>
         </div>
@@ -211,12 +265,14 @@
             <h3>Language</h3>
           </div>
           <div class="contentArea">
-            <div class="education_fild">
-              <p>English</p>
-              <p>Gujarati</p>
-              <p>Hindi</p>
-              <p>German</p>
-              <p>French</p>
+            <div class="language-category">
+              <div class="grid-container">
+                <div class="list p-80"><strong>English</strong></div>
+                <div class="list p-100"><strong>Gujarati</strong></div>
+                <div class="list p-100"><strong>Hindi</strong></div>
+                <div class="list p-20"><strong>German</strong></div>
+                <div class="list p-20"><strong>French</strong></div>
+              </div>
             </div>
           </div>
         </div>
@@ -230,114 +286,145 @@
           <h2>Fullstack Data Engineer</h2>
         </div>
 
-        <div class="areaBox experience">
+        <nav class="page-nav">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Professional Skills</a>
+        </nav>
+
+        <div class="areaBox experience" id="experience">
           <h3>Experience</h3>
           <div class="experience-list">
             <strong>Deputy Manager - Fullstack Data Engineer</strong>
             <div class="company-duration">
               <p>Eduspark International Pvt. Ltd. (Ampresand Group)</p>
-              <p>Apr 2025 - Present</p>
+              <p>Apr 2025 - Dec 2025</p>
             </div>
             <hr>
             <div class="cover">
               <ul class="responsibility">
-                <li><strong>Engineered robust APIs</strong>  that bridged multiple systems, enabling seamless data exchange and unlocking new integration opportunities.</li>
-                <li><strong>Led a cross-functional team</strong> across engineering, QA, and product management, fostering collaboration that accelerated delivery timelines and ensured project success.</li>
-                <li> <strong>Optimised legacy codebases,</strong> reducing system latency and cutting resource consumption, which directly improved performance and scalability..</li>
-                <li><strong>Designed and implemented scalable architectures</strong> to support rapidly evolving business requirements, ensuring systems remained resilient under growing workloads.</li>
-                <li><strong>Championed agile practices</strong> such as daily standups, sprint reviews, and retrospectives, driving team productivity and consistently delivering high-value results..</li>
-                <li><strong>Leveraged Metabase as a data validation tool,</strong> building queries and dashboards that empowered the business team to verify data accuracy and make informed decisions..</li>
+                <li>Architected microservices-based API integrations connecting ERP, HR, and finance systems, boosting
+                  cross-platform data consistency by over <strong>30%</strong> and cutting sync issues by
+                  <strong>25%</strong>.
+                </li>
+                <li>Led a multi-disciplinary team through agile sprints, driving <strong>100%</strong> on-time delivery
+                  of product releases and platform enhancements.</li>
+                <li>Optimised backend services by refactoring heavy data pipelines, reducing response latency by
+                  <strong>40%</strong>+ and lowering compute costs by <strong>15%</strong>.
+                </li>
+                <li>Introduced CI/CD automation for Node.js and PostgreSQL deployments, reducing manual interventions by
+                  <strong>80%</strong> and cutting deployment downtime by <strong>60%</strong>.
+                </li>
+                <li>Implemented analytics dashboards using Metabase to track KPIs, improving reporting accuracy by
+                  <strong>95%</strong> and reducing data validation time by <strong>50%</strong> for internal teams.
+                </li>
+                <li>Fostered a collaborative, metrics-driven engineering culture, which improved sprint predictability
+                  by <strong>20%</strong> and increased team throughput by <strong>15%</strong>.</li>
               </ul>
             </div>
           </div>
-
-          <div class="experience-list">
-            <strong>Senior Software Engineer</strong>
-            <div class="company-duration">
-              <p>Dew Solutions, Gurugram</p>
-              <p>July 2024 - Mar 2025</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li><strong>Engineered robust APIs</strong> that seamlessly connected disparate systems, improving interoperability and accelerating data exchange across platforms.</li>
-                <li><strong>Led a cross-functional team</strong> of developers, QA, and product managers, fostering collaboration that ensured smooth delivery of complex projects on time.</li>
-                <li><strong>Optimised existing codebases</strong>, reducing system latency and cutting resource consumption by improving algorithm efficiency and eliminating redundancies.</li>
-                <li><strong>Designed and implemented scalable architectures</strong> that supported rapid business growth and evolving requirements without compromising performance or reliability.</li>
-                <li><strong>Championed agile practices</strong>, including sprint planning, retrospectives, and daily standups, boosting team productivity and enabling faster, more predictable releases.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-list">
-            <strong>Software Developer</strong>
-            <div class="company-duration">
-            <p>AjnaLens, Mumbai</p>
-            <p>May 2023 - March 2024</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li><strong>Architected forward-thinking software features</strong> that not only expanded system functionality but also elevated the overall user experience, driving higher adoption.</li>
-                <li><strong>Orchestrated cross-team brainstorming workshops</strong>, transforming complex technical roadblocks into actionable solutions and accelerating project delivery.</li>
-                <li><strong>Conducted in-depth root-cause analysis and debugging</strong>, proactively eliminating defects and safeguarding performance for mission-critical applications.</li>
-                <li><strong>Drove agile adoption within the team</strong>, optimising sprint execution and fostering a culture of continuous improvement that boosted delivery speed and efficiency.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-list">
-            <strong>Senior Software Developer</strong>
-            <div class="company-duration">
-            <p>Planfirma Technologies Pvt LTD, Mumbai</p>
-            <p>February 2022 - March 2023</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li><strong>Directed and mentored a team of 5 engineers</strong>, conducting thorough code reviews to uphold development standards, improve code quality, and promote knowledge sharing.</li>
-                <li><strong>Oversaw end-to-end SDLC management</strong>, from requirements gathering to deployment, ensuring projects were delivered on time, within scope, and aligned with business goals.</li>
-                <li><strong>Architected scalable and high-performing systems</strong>, enabling applications to handle increasing workloads while maintaining reliability and efficiency.</li>
-                <li><strong>Cultivated a collaborative team culture</strong> by driving clear communication, fostering accountability, and motivating members to consistently achieve milestones.</li>
-              </ul>
-            </div>
-          </div>
-
           <div class="experience-list">
             <strong>Senior Full-stack Developer</strong>
             <div class="company-duration">
-            <p>Ranjan Soft, Mumbai</p>
-            <p>March 2017 - February 2022</p>
+              <p>Ranjan Soft, Mumbai</p>
+              <p>March 2017 - March 2025</p>
             </div>
             <hr>
             <div class="cover">
               <ul class="responsibility">
-                <li><strong>Partnered directly with clients</strong> to gather requirements, create technical documentation, and translate business needs into actionable development plans.</li>
-                <li><strong>Delegated and guided development tasks</strong> across a team of engineers, ensuring alignment with project goals and timely delivery of high-quality solutions.</li>
-                <li><strong>Architected and integrated diverse APIs</strong>, streamlining workflows and expanding product functionality to meet client demands.</li>
-                <li><strong>Oversaw database management and optimisation</strong>, safeguarding data integrity while improving application performance.</li>
-                <li><strong>Implemented version control practices</strong> to establish collaborative workflows, maintain code quality, and support distributed development.</li>
-                <li><strong>Delivered custom web applications</strong> that balanced intuitive user experience with client specifications, strengthening long-term business relationships.</li>
+                <li>Delivered enterprise platforms for global clients across finance, HR, logistics, and education,
+                  ensuring <strong>100%</strong> on-time releases and improving customer engagement by
+                  <strong>25%</strong>.
+                </li>
+
+                <li>Designed and implemented scalable backend systems that handled 2x traffic without
+                  degradation, raising uptime by <strong>30%+</strong> and reducing error rates by <strong>40%</strong>.
+                </li>
+
+                <li>Built and maintained RESTful APIs powering analytics dashboards and real-time data sync, improving
+                  data
+                  accuracy by <strong>25%</strong> and reducing sync delays by <strong>35%</strong>.</li>
+
+                <li>Created AR/VR-enabled features and real-time visualisation modules that boosted user interaction by
+                  <strong>40%</strong>
+                  and accelerated feature adoption by <strong>30%</strong>.
+                </li>
+
+                <li>Strengthened delivery speed by improving CI/CD workflows with automated tests, cutting deployment
+                  time
+                  by <strong>50%</strong> and lowering release failures by <strong>40%</strong>.</li>
+
+                <li>Improved team productivity by mentoring engineering teams, enhancing code quality by
+                  <strong>30%</strong>
+                  and reducing
+                  onboarding time by <strong>25%</strong>.
+                </li>
+
+                <li>Collaborated with UI/UX, product teams, and hardware engineers to streamline cross-platform data
+                  flow,
+                  reducing bottlenecks by <strong>30%</strong> and improving task completion rates by
+                  <strong>20%</strong>.
+                </li>
+
+                <li>Enhanced system security through stronger access controls and encryption, reducing security
+                  incidents by
+                  <strong>50%</strong>.
+                </li>
+
+                <li>Introduced agile improvements such as sprint velocity tracking and refined estimation models,
+                  cutting
+                  spillover by <strong>15%</strong> and improving sprint predictability by <strong>20%</strong>.</li>
+
+                <li>Implemented build automation for VR pipelines and backend services, boosting release efficiency by
+                  <strong>60%</strong>
+                  and reducing manual steps by <strong>40%</strong>.
+                </li>
+
+                <li>Owned end-to-end architecture across backend systems, database optimisation, indexing, and workflow
+                  automation—reducing maintenance overheads by up to <strong>45%</strong>.</li>
               </ul>
             </div>
-
           </div>
-
           <div class="experience-list">
             <strong>Senior Software Engineer</strong>
             <div class="company-duration">
-            <p>Direction Software Solution, Mumbai</p>
-            <p>February 2011 - February 2017</p>
+              <p>Direction Software Solution, Mumbai</p>
+              <p>February 2011 - February 2017</p>
             </div>
             <hr>
             <div class="cover">
               <ul class="responsibility">
-                <li><strong>Contributed to the development of a German client’s ERP system</strong>, implementing seamless API integrations that expanded functionality and improved overall user experience.</li>
-                <li><strong>Maintained project integrity through structured version control practices</strong>, ensuring smooth collaboration and traceability across multiple development cycles.</li>
-                <li><strong>Led comprehensive software testing and quality assurance efforts</strong>, proactively identifying and resolving defects before release, which enhanced system stability.</li>
-                <li><strong>Engineered robust and maintainable code solutions</strong>, aligning with best practices to deliver optimised ERP performance for large-scale business operations.</li>
-                <li><strong>Conducted systematic debugging and root-cause analysis</strong>, improving application reliability and minimising downtime for critical business processes.</li>
-                <li><strong>Applied Agile methodologies within a distributed team</strong>, streamlining workflows, strengthening collaboration, and accelerating the delivery of ERP enhancements.</li>
+                <li>Inspired and coordinated engineering teams of up to 15 developers across multiple client
+                  projects, improving delivery throughput by <strong>25%</strong> and reducing blockers by
+                  <strong>30%</strong>.
+                </li>
+
+                <li>Designed enterprise backends using Java and Spring Boot, supporting traffic spikes of 2–3x
+                  while maintaining stable performance under load.</li>
+
+                <li>Defined project scope, architecture blueprints, and technical milestones, reducing
+                  requirement ambiguity by <strong>40%</strong> and improving sign-off speed.</li>
+
+                <li>Introduced agile and DevOps practices, increasing deployment frequency by <strong>50%</strong> and
+                  reducing
+                  delivery delays by <strong>35%</strong>.</li>
+
+                <li>Diagnosed sprint and release gaps through improved planning and retrospectives, cutting
+                  spillover work by <strong>20%</strong> and improving predictability.</li>
+
+                <li>Optimised core modules by removing redundant logic, improving execution efficiency by
+                  <strong>30%</strong>
+                  and boosting code reuse across projects.
+                </li>
+
+                <li>Built reusable libraries and internal tools that reduced new project kick-off time
+                  by <strong>40%</strong> and improved development consistency.</li>
+
+                <li>Acted as the primary technical liaison for European clients, improving communication
+                  cycles by <strong>30%</strong> and increasing client satisfaction.</li>
+
+                <li>Coached developers on system design and optimisation techniques, improving team-level
+                  code quality metrics by <strong>25%</strong> and reducing debugging time.</li>
               </ul>
             </div>
           </div>
@@ -345,28 +432,108 @@
           <div class="experience-list">
             <strong>Software Developer</strong>
             <div class="company-duration">
-            <p>Base Information Management Pvt LTD, Mumbai</p>
-            <p>October 2003 - February 2011</p>
+              <p>Base Information Management Pvt LTD, Mumbai</p>
+              <p>October 2003 - February 2011</p>
             </div>
             <hr>
             <div class="cover">
               <ul class="responsibility">
-                <li><strong>Led a 15-member engineering team</strong> while serving as the primary client liaison (2005–2011), ensuring smooth communication, requirement gathering, and successful project delivery.</li>
-                <li><strong>Oversaw database design and management</strong>, safeguarding data integrity and enabling reliable access for enterprise-scale applications.</li>
-                <li><strong>Developed and optimised application features</strong>, significantly enhancing functionality, usability, and end-user experience.</li>
-                <li><strong>Directed debugging and troubleshooting efforts</strong>, resolving critical software issues and improving overall system reliability.</li>
-                <li><strong>Introduced and enforced version control practices</strong>, streamlining collaboration among multiple developers and ensuring clean, traceable deployments.</li>
-                <li><strong>Championed Agile adoption</strong> within the team, fostering adaptability, improving productivity, and driving consistent on-time project completions.</li>
+                <li>Developed and maintained enterprise-level modules in Java and MySQL, improving
+                  system stability and reducing production defects by <strong>30%</strong>.</li>
+                <li>Built custom data processing utilities and ETL workflows that supported high-volume
+                  reporting, cutting processing time by <strong>40%</strong> and improving data availability.</li>
+                <li>Collaborated with architects to redesign legacy systems, increasing database
+                  performance by <strong>35%</strong> and reducing storage usage by <strong>20%</strong>.</li>
+                <li>Delivered full SDLC ownership across multiple long-term client accounts, achieving
+                  100% on-time delivery for key module releases.</li>
+                <li>Documented technical workflows and maintained internal knowledge bases, reducing
+                  onboarding time for new engineers by <strong>25%</strong>.</li>
+                <li>Implemented version control using SVN and later Git, improving team collaboration
+                  efficiency by <strong>40%</strong> and reducing merge conflicts.</li>
+                <li>Supported QA and client UAT cycles, resolving defects and patches <strong>20%</strong> faster
+                  through targeted debugging.</li>
+                <li>Provided technical guidance to junior engineers and interns, improving team
+                  productivity by <strong>20%</strong> and enhancing code quality.</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="areaBox skill">
+        <div class="areaBox projects" id="projects">
+          <h3>Projects</h3>
+          <div class="experience-list">
+            <strong>Mandatos Android App</strong>
+            <div class="company-duration">
+              <p>Android App, Java, SQLite, Oracle, HTML, CSS, JavaScript</p>
+              <p>2009 - 2010</p>
+            </div>
+            <hr>
+            <div class="cover">
+              <ul>
+                <li>Mantatos is a tool used by the German government to record information about resident families. The
+                  application also supports offline functionality for rural areas where internet access is limited.
+                  Field staff can collect data without a Wi-Fi or mobile connection, and once they return to an urban
+                  area, the application synchronises and pushes the data to the central server.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-list">
+            <strong>Shipment Tracking Android App</strong>
+            <div class="company-duration">
+              <p>Android 4.0, Java, PostgreSql, SQLite, HTML, CSS, JavaScript</p>
+              <p>2010 - 2011</p>
+            </div>
+            <hr>
+            <div class="cover">
+              <ul>
+                <li>An Android-based application that imports and exports shipment data. This tracking system was used
+                  when goods were transported by sea from one country to another, helping stakeholders monitor shipment
+                  status, movement, and related logistics information in real time.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-list">
+            <strong><a href="https://marketplus.ddsfam.uk/">MarketPlus</a></strong>
+            <div class="company-duration">
+              <p>Python Django, Django Templetes, MySQL, HTML, CSS, JavaScript</p>
+              <p>2011 - 2012</p>
+            </div>
+            <hr>
+            <div class="cover">
+              <ul>
+                <li>A web application that helps users download, track, and analyse data from major Indian and global
+                  financial markets. It brings together information from BSE, NSE, FnO, Forex, Commodities, Crypto, and
+                  Global indices in one place. The app includes user login, detailed stock dashboards, moving average
+                  charts, trend indicators, buy-sell signals, and clear cumulative analytics. It also stores market data
+                  for future use and is designed to grow with upcoming features like mobile apps, public APIs, and
+                  AI-driven predictions.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="experience-list">
+            <strong><a href="https://driveronhire.ddsfam.uk/">DriverOnHire</a></strong>
+            <div class="company-duration">
+              <p>JavaScript, Express.js, Node.js, SQL Server, HTML, CSS, React.js, Bootstrap</p>
+              <p>2020 - 2022</p>
+            </div>
+            <hr>
+            <div class="cover">
+              <ul>
+                <li>A web application that makes it easy to book reliable drivers whenever you need them. Whether it’s a
+                  quick trip or a planned ride, the platform connects users with trained drivers who bring more than
+                  five years of experience. The service focuses on simple booking, trustworthy drivers, and a smooth
+                  travel experience.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="areaBox skill" id="skills">
           <h3>Professional Skills</h3>
           <!-- Backend -->
           <div class="skill-category">
             <h4>Backend</h4>
+            <hr>
             <div class="grid-container">
               <div class="list p-80"><strong>Python</strong></div>
               <div class="list p-50"><strong>FastAPI</strong></div>
@@ -387,6 +554,7 @@
           <!-- Frontend -->
           <div class="skill-category">
             <h4>Frontend</h4>
+            <hr>
             <div class="grid-container">
               <div class="list p-60"><strong>JavaScript</strong></div>
               <div class="list p-70"><strong>Jquery</strong></div>
@@ -400,13 +568,14 @@
               <div class="list p-30"><strong>Vue JS</strong></div>
               <div class="list p-30"><strong>Flutter</strong></div>
               <div class="list p-30"><strong>React Native</strong></div>
-              <div class="list p-30"><strong>Next JS</strong></div>              
+              <div class="list p-30"><strong>Next JS</strong></div>
             </div>
           </div>
 
           <!-- Database -->
           <div class="skill-category">
             <h4>Database</h4>
+            <hr>
             <div class="grid-container">
               <div class="list p-90"><strong>Oracle PL/SQL</strong></div>
               <div class="list p-95"><strong>SQL</strong></div>
@@ -422,6 +591,7 @@
           <!-- Machine Learning -->
           <div class="skill-category">
             <h4>Machine Learning</h4>
+            <hr>
             <div class="grid-container">
               <div class="list p-40"><strong>Numpy</strong></div>
               <div class="list p-40"><strong>Pandas</strong></div>
@@ -439,6 +609,7 @@
           <!-- Artificial Intelligence -->
           <div class="skill-category">
             <h4>Artificial Intelligence</h4>
+            <hr>
             <div class="grid-container">
               <!-- Add AI-related skills here -->
               <div class="list p-10"><strong>OpenAI API</strong></div>
@@ -450,6 +621,7 @@
           <!-- Deep Learning -->
           <div class="skill-category">
             <h4>Deep Learning</h4>
+            <hr>
             <div class="grid-container">
               <div class="list p-10"><strong>TensorFlow</strong></div>
               <div class="list p-10"><strong>Keras</strong></div>
