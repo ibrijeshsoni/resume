@@ -4,6 +4,7 @@ services:
     container_name: brijeshsoni-resume
     ports:
       - "10110:80"
+      - "10443:443"
     restart: always
     networks:
       - web-network
