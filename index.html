@@ -1,640 +1,554 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="navy" data-mode="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="favicon_io _me/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="favicon_io _me/favicon-16x16.png" />
   <link rel="shortcut icon" href="favicon_io _me/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="favicon_io _me/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <title>Brijesh Soni - Fullstack Data Engineer</title>
-  <!-- Link to your CSS file -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="index.css">
-  <style>
-    /* Add any inline CSS here if necessary */
-  </style>
+  <title>Brijesh Soni – Python Architect | Backend &amp; Distributed Systems | Microservices | FastAPI/Flask</title>
+
+  <!-- Font Awesome 4 (matches original icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+  <!-- Resume Stylesheet -->
+  <link rel="stylesheet" href="resume-style.css"/>
+
+  <!-- html2pdf for high-quality PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
-
 <body>
-  <button id="theme-toggle" aria-label="Toggle Dark Mode">
-    <i class="fa fa-moon-o" aria-hidden="true"></i>
-  </button>
 
-  <script>
-    const toggleButton = document.getElementById('theme-toggle');
-    const icon = toggleButton.querySelector('i');
-    const currentTheme = localStorage.getItem('theme');
+<!-- ══════════════════════════════════════════════════════════
+     TOOLBAR
+     ══════════════════════════════════════════════════════════ -->
+<div id="toolbar">
+  <div class="theme-swatches">
+    <span class="swatch-label">Theme</span>
+    <div class="swatch-wrap" data-label="Navy">
+      <div class="swatch active" data-theme="navy"></div>
+    </div>
+    <div class="swatch-wrap" data-label="Forest">
+      <div class="swatch" data-theme="forest"></div>
+    </div>
+    <div class="swatch-wrap" data-label="Crimson">
+      <div class="swatch" data-theme="crimson"></div>
+    </div>
+    <div class="swatch-wrap" data-label="Slate">
+      <div class="swatch" data-theme="slate"></div>
+    </div>
+    <div class="swatch-wrap" data-label="Amber">
+      <div class="swatch" data-theme="amber"></div>
+    </div>
+    <div class="swatch-wrap" data-label="Violet">
+      <div class="swatch" data-theme="violet"></div>
+    </div>
+  </div>
+  <div class="toolbar-right">
+    <button id="mode-toggle" type="button">
+      <span class="icon">🌙</span>
+      <span class="label">Dark Mode</span>
+    </button>
+    <button id="btn-export" type="button">
+      <i class="fa fa-file-pdf-o"></i> Export to PDF
+    </button>
+  </div>
+</div>
 
-    if (currentTheme) {
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      if (currentTheme === 'dark') {
-        icon.classList.remove('fa-moon-o');
-        icon.classList.add('fa-sun-o');
-      }
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      icon.classList.remove('fa-moon-o');
-      icon.classList.add('fa-sun-o');
-    }
 
-    toggleButton.addEventListener('click', () => {
-      let theme = document.documentElement.getAttribute('data-theme');
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        icon.classList.remove('fa-sun-o');
-        icon.classList.add('fa-moon-o');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        icon.classList.remove('fa-moon-o');
-        icon.classList.add('fa-sun-o');
-      }
-    });
-  </script>
-  <style>
-    #theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-primary);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      box-shadow: var(--shadow-card);
-      transition: all 0.3s ease;
-    }
+<!-- ══════════════════════════════════════════════════════════
+     MAIN RESUME CARD
+     ══════════════════════════════════════════════════════════ -->
+<div class="shadowBox" id="resume-main">
+  <section class="main">
 
-    #theme-toggle:hover {
-      transform: scale(1.1);
-    }
-  </style>
-  <div class="shadowBox">
-    <section class="main">
-      <!-- leftSide -->
-      <div class="side_left">
-        <div class="profile">
+    <!-- ══════════════════════════════
+         LEFT SIDEBAR
+         ══════════════════════════════ -->
+    <div class="side_left">
+
+      <div class="profile"></div>
+
+      <!-- Name -->
+      <div class="profile_name">
+        <h1><strong>Brijesh</strong> Soni</h1>
+        <h2>Python Architect | Backend &amp; Distributed Systems | Microservices | FastAPI/Flask</h2>
+      </div>
+
+      <!-- About Me -->
+      <div class="boxArea about">
+        <div class="title">
+          <span><em>
+            <svg height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.46 16.07C4.92 18.28 1 23.68 1 30a1 1 0 0 0 1 1h28a1 1 0 0 0 1-1c0-6.32-3.93-11.72-9.47-13.93A10 10 0 0 1 16 18a10 10 0 0 1-5.54-1.93zM16 1a8 8 0 1 0 0 16A8 8 0 0 0 16 1z"/>
+            </svg>
+          </em></span>
+          <h3>About Me</h3>
         </div>
-
-        <div class="profile_name">
-          <h1><strong>Brijesh</strong> Soni</h1>
-          <h2>Fullstack Data Engineer</h2>
-        </div>
-
-        <div class="boxArea about">
-          <div class="title">
-            <span>
-              <em>
-                <?xml version="1.0" ?><svg height="32" id="svg8" version="1.1" viewBox="0 0 8.4666665 8.4666669"
-                  width="32" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#"
-                  xmlns:dc="http://purl.org/dc/elements/1.1/"
-                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                  xmlns:svg="http://www.w3.org/2000/svg">
-                  <defs id="defs2" />
-                  <g id="layer1" transform="translate(0,-288.53332)">
-                    <path
-                      d="M 10.462891 16.070312 C 4.9244824 18.277775 0.99608795 23.682844 0.99609375 30 A 1.0001 1.0001 0 0 0 2 31.003906 L 30 31.003906 A 1.0001 1.0001 0 0 0 30.996094 30 C 30.996099 23.68349 27.06876 18.278206 21.53125 16.070312 C 19.99994 17.27111 18.07881 17.996094 15.996094 17.996094 C 13.912967 17.996094 11.992832 17.271538 10.462891 16.070312 z "
-                      id="path935"
-                      style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-                      transform="matrix(0.26458333,0,0,0.26458333,0,288.53332)" />
-                    <path
-                      d="M 15.996094 1.0039062 C 11.589664 1.0039062 8.0019573 4.5916469 8.0019531 8.9980469 C 8.0019573 13.404485 11.589664 17 15.996094 17 C 20.402524 17 23.998043 13.404485 23.998047 8.9980469 C 23.998043 4.5916469 20.402524 1.0039062 15.996094 1.0039062 z "
-                      id="path940"
-                      style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.99999988;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-                      transform="matrix(0.26458333,0,0,0.26458333,0,288.53332)" />
-                  </g>
-                </svg>
-              </em>
-            </span>
-            <h3>About Me</h3>
-          </div>
-          <div class="contentArea">
-            <p>
+        <div class="contentArea">
+          <p>
             <ul class="info">
-              <li>Directed teams of <strong>20+</strong> engineers while managing large, multi-country client
-                engagements.</li>
-              <li>Designed and delivered scalable enterprise systems that improved efficiency and reduced operational
-                overhead.</li>
-              <li>Streamlined development processes and turned strategic business needs into practical, high-value
-                solutions.</li>
-              <li>Worked closely with cross-functional groups to ensure timely, high -quality delivery across diverse
-                technologies.</li>
+              <li>Directed teams of <strong>20+</strong> engineers while managing large, multi-country client engagements.</li>
+              <li>Designed and delivered scalable enterprise systems that improved efficiency and reduced operational overhead.</li>
+              <li>Streamlined development processes and turned strategic business needs into practical, high-value solutions.</li>
+              <li>Worked closely with cross-functional groups to ensure timely, high-quality delivery across diverse technologies.</li>
             </ul>
-            </p>
-          </div>
+          </p>
         </div>
-
-        <div class="boxArea contact">
-          <div class="title">
-            <span>
-
-            </span>
-            <h3>Contact Me</h3>
-          </div>
-          <div class="contentArea">
-            <div class="contact-list">
-              <span>
-                <em>
-                  <?xml version="1.0" ?><svg id="Layer_1" height="22" style="enable-background:new 0 0 512 512;"
-                    version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path
-                      d="M351.5,339.3c-18.8-4.1-41.3,3.1-49.4,20.6c-4.7,10.1-5.4,23.9-15.6,28.4c-7.3,3.3-15.7-0.4-22.7-4.3  c-34.4-19.2-103.4-156.4-98.2-195.5c1-7.9,3.2-16.9,10.1-20.8c9.7-5.5,21.2,2.2,32.1,4.4c18.9,4,38-9.8,46-27.3  c8-17.5,7.1-37.8,4.4-56.9c-3.2-22.3-9.2-45.2-24-62.1c-42.2-48-104.5,0.4-129.4,40.9C88.8,92.8,80,122.7,75.8,152.8  C66.7,217,182,446.4,239,477.5c26.7,14.6,55.9,25.3,86.2,28c47.4,4.2,123.4-16.9,110.1-79.4c-4.7-22-19.5-40.5-35.5-56.3  C386,356.2,370.3,343.4,351.5,339.3z"
-                      id="XMLID_1_" />
-                  </svg>
-                </em>
-              </span>
-              <h3><a href="tel:+919819855471">+91 9819855471</a></h3>
-            </div>
-            <div class="contact-list">
-              <span>
-                <em>
-                  <?xml version="1.0" ?>
-                  <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-                  <svg height="28" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1"
-                    viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path
-                      d="M8,10c-0.266,0-0.5-0.094-1-0.336L0,6v7c0,0.55,0.45,1,1,1h14c0.55,0,1-0.45,1-1V6L9,9.664C8.5,9.906,8.266,10,8,10z M15,2  H1C0.45,2,0,2.45,0,3v0.758l8,4.205l8-4.205V3C16,2.45,15.55,2,15,2z" />
-                  </svg>
-                </em>
-              </span>
-              <h3><a href="mailto:ibrijeshsoni@gmail.com">ibrijeshsoni@gmail.com</a></h3>
-            </div>
-            <div class="contact-list">
-              <span>
-                <em>
-
-                  <?xml version="1.0" ?>
-                  <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-                  <svg height="28" id="Layer_1" style="enable-background:new 0 0 16 16;" version="1.1"
-                    viewBox="0 0 16 16" width="16px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path
-                      d="M15.45,7L14,5.551V2c0-0.55-0.45-1-1-1h-1c-0.55,0-1,0.45-1,1v0.553L9,0.555C8.727,0.297,8.477,0,8,0S7.273,0.297,7,0.555  L0.55,7C0.238,7.325,0,7.562,0,8c0,0.563,0.432,1,1,1h1v6c0,0.55,0.45,1,1,1h3v-5c0-0.55,0.45-1,1-1h2c0.55,0,1,0.45,1,1v5h3  c0.55,0,1-0.45,1-1V9h1c0.568,0,1-0.437,1-1C16,7.562,15.762,7.325,15.45,7z" />
-                  </svg>
-                </em>
-              </span>
-              <h3>Mumbai, India</h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxArea education">
-          <div class="title">
-            <span>
-              <em>
-
-                <?xml version="1.0" ?><svg fill="none" height="28" stroke="currentColor" stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                </svg>
-              </em>
-            </span>
-            <h3>Education</h3>
-          </div>
-          <div class="contentArea">
-            <div class="education_fild">
-              <p>2001 - 2003</p>
-              <strong>BSc + Computer Science</strong>
-              <p>Uttar Pradesh University</p>
-            </div>
-
-            <div class="education_fild">
-              <p>1998 - 2000</p>
-              <strong>Higher Secondary Certificate</strong>
-              <p>Uttar Pradesh State Board</p>
-            </div>
-
-            <div class="education_fild">
-              <p>1988 - 1998</p>
-              <strong>SSC in design</strong>
-              <p>Maharastra State Board</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxArea interests">
-          <div class="title">
-            <span>
-              <em>
-                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 107.3">
-                  <title>wishlist</title>
-                  <path
-                    d="M65.58,90.82l10.49,9.91L65.58,90.82Zm-2.52,5.76a3.06,3.06,0,0,1,0,6.12H7.12a7.09,7.09,0,0,1-5-2.1h0a7.1,7.1,0,0,1-2.09-5V7.12a7.06,7.06,0,0,1,2.1-5h0A7.1,7.1,0,0,1,7.12,0H91.63a7.1,7.1,0,0,1,5,2.09l.21.23a7.16,7.16,0,0,1,1.88,4.8V49a3.06,3.06,0,0,1-6.12,0V7.12a1,1,0,0,0-.22-.62l-.08-.08a1,1,0,0,0-.7-.3H7.12a1,1,0,0,0-.7.3h0a1,1,0,0,0-.29.7V95.58a1,1,0,0,0,.3.7h0a1,1,0,0,0,.7.29ZM95.44,67.42c3.54-3.7,6-6.89,11.5-7.52,10.24-1.17,19.65,9.32,14.47,19.64-1.47,2.94-4.47,6.44-7.78,9.87C110,93.18,106,96.87,103.14,99.67l-7.69,7.63-6.36-6.12C81.44,93.82,69,84.54,68.55,73.06c-.28-8,6.07-13.2,13.37-13.11,6.53.09,9.29,3.33,13.52,7.47Zm-71.66,0A3.62,3.62,0,1,1,20.16,71a3.62,3.62,0,0,1,3.62-3.62Zm14.71,7.27a3.15,3.15,0,0,1,0-6.19h11.8a3.15,3.15,0,0,1,0,6.19ZM23.78,46a3.62,3.62,0,1,1-3.62,3.61A3.62,3.62,0,0,1,23.78,46Zm14.71,6.94a3.1,3.1,0,0,1,0-6.11H62.58a3.1,3.1,0,0,1,0,6.11ZM23.78,24.6a3.62,3.62,0,1,1-3.62,3.62,3.62,3.62,0,0,1,3.62-3.62Zm14.71,6.65a2.84,2.84,0,0,1-2.57-3.05,2.85,2.85,0,0,1,2.57-3.06H72.38A2.85,2.85,0,0,1,75,28.2a2.84,2.84,0,0,1-2.57,3.05Z" />
-                </svg>
-              </em>
-            </span>
-            <h3>Interests</h3>
-          </div>
-          <div class="contentArea">
-            <div class="education_fild">
-              <p>Coding</p>
-              <p>Reading</p>
-              <p>Learning</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxArea interests">
-          <div class="title">
-            <span>
-              <em>
-                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 92.91">
-                  <title>language</title>
-                  <path
-                    d="M20.15,83.63,31.63,73.4a2.89,2.89,0,0,1,1.91-.73h27.8a.92.92,0,0,0,.93-.93V65.9H68v5.84a6.71,6.71,0,0,1-6.68,6.68H34.62L19.3,92.07a2.87,2.87,0,0,1-4.9-2V78.42H6.69A6.71,6.71,0,0,1,0,71.74V28.59a6.76,6.76,0,0,1,6.69-6.68H43.35v5.75H6.69a1,1,0,0,0-.94.93V71.74a.91.91,0,0,0,.28.65,1,1,0,0,0,.66.28H17.27a2.88,2.88,0,0,1,2.88,2.88v8.08Zm.21-19.48L29.6,36.24h8.83l9.24,27.91H40.35L38.8,59.07H29.15l-1.51,5.08ZM30.79,53.24h6.37L34,41.81,30.79,53.24ZM76.63,13.35h8.7V11.11a.69.69,0,0,1,.69-.69h4.65a.68.68,0,0,1,.68.69v2.24h9.76a.68.68,0,0,1,.68.69V18.5a.68.68,0,0,1-.68.68H99.56a26.3,26.3,0,0,1-.91,3.88l0,.06a26.07,26.07,0,0,1-1.74,4.15,32.34,32.34,0,0,1-2.14,3.43c-.67,1-1.41,1.9-2.2,2.83a35.78,35.78,0,0,0,3.68,3.83,41.43,41.43,0,0,0,5.09,3.74.68.68,0,0,1,.21.94l-2.39,3.73a.69.69,0,0,1-1,.2,45.88,45.88,0,0,1-5.58-4.08l0,0a41.42,41.42,0,0,1-4-4.1C87.3,38.93,86.15,40,85,41l0,0c-1.36,1.12-2.79,2.2-4.47,3.36a.69.69,0,0,1-1-.17L77,40.53a.69.69,0,0,1,.17-1c1.66-1.14,3-2.19,4.36-3.28,1.16-1,2.28-2,3.49-3.16a44.82,44.82,0,0,1-2.77-4.45A28.84,28.84,0,0,1,80,22.9a.68.68,0,0,1,.47-.84l4.27-1.19a.68.68,0,0,1,.84.47A22.62,22.62,0,0,0,89,28.7L90.27,27a26.33,26.33,0,0,0,1.51-2.47l0,0A19.43,19.43,0,0,0,93,21.62a24,24,0,0,0,.66-2.44h-17a.69.69,0,0,1-.69-.68V14a.69.69,0,0,1,.69-.69Zm27,56.82L88.26,56.51H61.54a6.73,6.73,0,0,1-6.69-6.68V6.69a6.71,6.71,0,0,1,2-4.72l.2-.18A6.67,6.67,0,0,1,61.54,0h54.65a6.69,6.69,0,0,1,4.71,2l.19.2a6.69,6.69,0,0,1,1.79,4.51V49.83a6.73,6.73,0,0,1-6.69,6.68h-7.7V68.13a2.88,2.88,0,0,1-4.91,2ZM91.26,51.49l11.47,10.23V53.64a2.88,2.88,0,0,1,2.88-2.88h10.58a.92.92,0,0,0,.65-.28.91.91,0,0,0,.29-.65V6.69a1,1,0,0,0-.22-.58L116.84,6a1,1,0,0,0-.65-.29H61.54A.94.94,0,0,0,61,6L60.89,6a.92.92,0,0,0-.28.65V49.83a.92.92,0,0,0,.93.93H89.35a2.86,2.86,0,0,1,1.91.73Z" />
-                </svg>
-              </em>
-            </span>
-            <h3>Language</h3>
-          </div>
-          <div class="contentArea">
-            <div class="language-category">
-              <div class="grid-container">
-                <div class="list p-80"><strong>English</strong></div>
-                <div class="list p-100"><strong>Gujarati</strong></div>
-                <div class="list p-100"><strong>Hindi</strong></div>
-                <div class="list p-20"><strong>German</strong></div>
-                <div class="list p-20"><strong>French</strong></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- rightSide -->
-      <div class="side_Right">
-        <div class="profile_name">
-          <h1><strong>Brijesh</strong> Soni</h1>
-          <h2>Fullstack Data Engineer</h2>
+      <!-- Contact -->
+      <div class="boxArea contact">
+        <div class="title">
+          <span><em>
+            <svg height="18" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <path d="M351.5 339.3c-18.8-4.1-41.3 3.1-49.4 20.6-4.7 10.1-5.4 23.9-15.6 28.4-7.3 3.3-15.7-.4-22.7-4.3-34.4-19.2-103.4-156.4-98.2-195.5 1-7.9 3.2-16.9 10.1-20.8 9.7-5.5 21.2 2.2 32.1 4.4 18.9 4 38-9.8 46-27.3 8-17.5 7.1-37.8 4.4-56.9-3.2-22.3-9.2-45.2-24-62.1-42.2-48-104.5.4-129.4 40.9C88.8 92.8 80 122.7 75.8 152.8 66.7 217 182 446.4 239 477.5c26.7 14.6 55.9 25.3 86.2 28 47.4 4.2 123.4-16.9 110.1-79.4-4.7-22-19.5-40.5-35.5-56.3C386 356.2 370.3 343.4 351.5 339.3z"/>
+            </svg>
+          </em></span>
+          <h3>Contact Me</h3>
         </div>
-
-        <nav class="page-nav">
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Professional Skills</a>
-        </nav>
-
-        <div class="areaBox experience" id="experience">
-          <h3>Experience</h3>
-          <div class="experience-list">
-            <strong>Deputy Manager - Fullstack Data Engineer</strong>
-            <div class="company-duration">
-              <p>Eduspark International Pvt. Ltd. (Ampresand Group)</p>
-              <p>Apr 2025 - Dec 2025</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li>Architected microservices-based API integrations connecting ERP, HR, and finance systems, boosting
-                  cross-platform data consistency by over <strong>30%</strong> and cutting sync issues by
-                  <strong>25%</strong>.
-                </li>
-                <li>Led a multi-disciplinary team through agile sprints, driving <strong>100%</strong> on-time delivery
-                  of product releases and platform enhancements.</li>
-                <li>Optimised backend services by refactoring heavy data pipelines, reducing response latency by
-                  <strong>40%</strong>+ and lowering compute costs by <strong>15%</strong>.
-                </li>
-                <li>Introduced CI/CD automation for Node.js and PostgreSQL deployments, reducing manual interventions by
-                  <strong>80%</strong> and cutting deployment downtime by <strong>60%</strong>.
-                </li>
-                <li>Implemented analytics dashboards using Metabase to track KPIs, improving reporting accuracy by
-                  <strong>95%</strong> and reducing data validation time by <strong>50%</strong> for internal teams.
-                </li>
-                <li>Fostered a collaborative, metrics-driven engineering culture, which improved sprint predictability
-                  by <strong>20%</strong> and increased team throughput by <strong>15%</strong>.</li>
-              </ul>
-            </div>
+        <div class="contentArea">
+          <div class="contact-list">
+            <span><em>
+              <svg height="16" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M351.5 339.3c-18.8-4.1-41.3 3.1-49.4 20.6-4.7 10.1-5.4 23.9-15.6 28.4-7.3 3.3-15.7-.4-22.7-4.3-34.4-19.2-103.4-156.4-98.2-195.5 1-7.9 3.2-16.9 10.1-20.8 9.7-5.5 21.2 2.2 32.1 4.4 18.9 4 38-9.8 46-27.3 8-17.5 7.1-37.8 4.4-56.9-3.2-22.3-9.2-45.2-24-62.1-42.2-48-104.5.4-129.4 40.9C88.8 92.8 80 122.7 75.8 152.8 66.7 217 182 446.4 239 477.5c26.7 14.6 55.9 25.3 86.2 28 47.4 4.2 123.4-16.9 110.1-79.4-4.7-22-19.5-40.5-35.5-56.3C386 356.2 370.3 343.4 351.5 339.3z"/>
+              </svg>
+            </em></span>
+            <h3><a href="tel:+919819855471">+91 9819855471</a></h3>
           </div>
-          <div class="experience-list">
-            <strong>Senior Full-stack Developer</strong>
-            <div class="company-duration">
-              <p>Ranjan Soft, Mumbai</p>
-              <p>March 2017 - March 2025</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li>Delivered enterprise platforms for global clients across finance, HR, logistics, and education,
-                  ensuring <strong>100%</strong> on-time releases and improving customer engagement by
-                  <strong>25%</strong>.
-                </li>
-
-                <li>Designed and implemented scalable backend systems that handled 2x traffic without
-                  degradation, raising uptime by <strong>30%+</strong> and reducing error rates by <strong>40%</strong>.
-                </li>
-
-                <li>Built and maintained RESTful APIs powering analytics dashboards and real-time data sync, improving
-                  data
-                  accuracy by <strong>25%</strong> and reducing sync delays by <strong>35%</strong>.</li>
-
-                <li>Created AR/VR-enabled features and real-time visualisation modules that boosted user interaction by
-                  <strong>40%</strong>
-                  and accelerated feature adoption by <strong>30%</strong>.
-                </li>
-
-                <li>Strengthened delivery speed by improving CI/CD workflows with automated tests, cutting deployment
-                  time
-                  by <strong>50%</strong> and lowering release failures by <strong>40%</strong>.</li>
-
-                <li>Improved team productivity by mentoring engineering teams, enhancing code quality by
-                  <strong>30%</strong>
-                  and reducing
-                  onboarding time by <strong>25%</strong>.
-                </li>
-
-                <li>Collaborated with UI/UX, product teams, and hardware engineers to streamline cross-platform data
-                  flow,
-                  reducing bottlenecks by <strong>30%</strong> and improving task completion rates by
-                  <strong>20%</strong>.
-                </li>
-
-                <li>Enhanced system security through stronger access controls and encryption, reducing security
-                  incidents by
-                  <strong>50%</strong>.
-                </li>
-
-                <li>Introduced agile improvements such as sprint velocity tracking and refined estimation models,
-                  cutting
-                  spillover by <strong>15%</strong> and improving sprint predictability by <strong>20%</strong>.</li>
-
-                <li>Implemented build automation for VR pipelines and backend services, boosting release efficiency by
-                  <strong>60%</strong>
-                  and reducing manual steps by <strong>40%</strong>.
-                </li>
-
-                <li>Owned end-to-end architecture across backend systems, database optimisation, indexing, and workflow
-                  automation—reducing maintenance overheads by up to <strong>45%</strong>.</li>
-              </ul>
-            </div>
+          <div class="contact-list">
+            <span><em>
+              <svg height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 10c-.266 0-.5-.094-1-.336L0 6v7c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V6L9 9.664C8.5 9.906 8.266 10 8 10zM15 2H1C.45 2 0 2.45 0 3v.758l8 4.205 8-4.205V3c0-.55-.45-1-1-1z"/>
+              </svg>
+            </em></span>
+            <h3><a href="mailto:ibrijeshsoni@gmail.com">ibrijeshsoni@gmail.com</a></h3>
           </div>
-          <div class="experience-list">
-            <strong>Senior Software Engineer</strong>
-            <div class="company-duration">
-              <p>Direction Software Solution, Mumbai</p>
-              <p>February 2011 - February 2017</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li>Inspired and coordinated engineering teams of up to 15 developers across multiple client
-                  projects, improving delivery throughput by <strong>25%</strong> and reducing blockers by
-                  <strong>30%</strong>.
-                </li>
-
-                <li>Designed enterprise backends using Java and Spring Boot, supporting traffic spikes of 2–3x
-                  while maintaining stable performance under load.</li>
-
-                <li>Defined project scope, architecture blueprints, and technical milestones, reducing
-                  requirement ambiguity by <strong>40%</strong> and improving sign-off speed.</li>
-
-                <li>Introduced agile and DevOps practices, increasing deployment frequency by <strong>50%</strong> and
-                  reducing
-                  delivery delays by <strong>35%</strong>.</li>
-
-                <li>Diagnosed sprint and release gaps through improved planning and retrospectives, cutting
-                  spillover work by <strong>20%</strong> and improving predictability.</li>
-
-                <li>Optimised core modules by removing redundant logic, improving execution efficiency by
-                  <strong>30%</strong>
-                  and boosting code reuse across projects.
-                </li>
-
-                <li>Built reusable libraries and internal tools that reduced new project kick-off time
-                  by <strong>40%</strong> and improved development consistency.</li>
-
-                <li>Acted as the primary technical liaison for European clients, improving communication
-                  cycles by <strong>30%</strong> and increasing client satisfaction.</li>
-
-                <li>Coached developers on system design and optimisation techniques, improving team-level
-                  code quality metrics by <strong>25%</strong> and reducing debugging time.</li>
-              </ul>
-            </div>
+          <div class="contact-list">
+            <span><em>
+              <svg height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.45 7L14 5.551V2c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v.553L9 .555C8.727.297 8.477 0 8 0S7.273.297 7 .555L.55 7C.238 7.325 0 7.562 0 8c0 .563.432 1 1 1h1v6c0 .55.45 1 1 1h3v-5c0-.55.45-1 1-1h2c.55 0 1 .45 1 1v5h3c.55 0 1-.45 1-1V9h1c.568 0 1-.437 1-1 0-.438-.238-.675-.55-1z"/>
+              </svg>
+            </em></span>
+            <h3>Mumbai, India</h3>
           </div>
-
-          <div class="experience-list">
-            <strong>Software Developer</strong>
-            <div class="company-duration">
-              <p>Base Information Management Pvt LTD, Mumbai</p>
-              <p>October 2003 - February 2011</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul class="responsibility">
-                <li>Developed and maintained enterprise-level modules in Java and MySQL, improving
-                  system stability and reducing production defects by <strong>30%</strong>.</li>
-                <li>Built custom data processing utilities and ETL workflows that supported high-volume
-                  reporting, cutting processing time by <strong>40%</strong> and improving data availability.</li>
-                <li>Collaborated with architects to redesign legacy systems, increasing database
-                  performance by <strong>35%</strong> and reducing storage usage by <strong>20%</strong>.</li>
-                <li>Delivered full SDLC ownership across multiple long-term client accounts, achieving
-                  100% on-time delivery for key module releases.</li>
-                <li>Documented technical workflows and maintained internal knowledge bases, reducing
-                  onboarding time for new engineers by <strong>25%</strong>.</li>
-                <li>Implemented version control using SVN and later Git, improving team collaboration
-                  efficiency by <strong>40%</strong> and reducing merge conflicts.</li>
-                <li>Supported QA and client UAT cycles, resolving defects and patches <strong>20%</strong> faster
-                  through targeted debugging.</li>
-                <li>Provided technical guidance to junior engineers and interns, improving team
-                  productivity by <strong>20%</strong> and enhancing code quality.</li>
-              </ul>
-            </div>
+          <div class="contact-list">
+            <span><em>
+              <svg height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </em></span>
+            <h3><a href="https://linkedin.com/in/ibrijeshsoni0810/" target="_blank">linkedin.com/in/ibrijeshsoni0810</a></h3>
+          </div>
+          <div class="contact-list">
+            <span><em>
+              <svg height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </em></span>
+            <h3><a href="https://ibrijeshsoni.github.io/resume/" target="_blank">ibrijeshsoni.github.io/resume</a></h3>
           </div>
         </div>
-
-        <div class="areaBox projects" id="projects">
-          <h3>Projects</h3>
-          <div class="experience-list">
-            <strong>Mandatos Android App</strong>
-            <div class="company-duration">
-              <p>Android App, Java, SQLite, Oracle, HTML, CSS, JavaScript</p>
-              <p>2009 - 2010</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul>
-                <li>Mantatos is a tool used by the German government to record information about resident families. The
-                  application also supports offline functionality for rural areas where internet access is limited.
-                  Field staff can collect data without a Wi-Fi or mobile connection, and once they return to an urban
-                  area, the application synchronises and pushes the data to the central server.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="experience-list">
-            <strong>Shipment Tracking Android App</strong>
-            <div class="company-duration">
-              <p>Android 4.0, Java, PostgreSql, SQLite, HTML, CSS, JavaScript</p>
-              <p>2010 - 2011</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul>
-                <li>An Android-based application that imports and exports shipment data. This tracking system was used
-                  when goods were transported by sea from one country to another, helping stakeholders monitor shipment
-                  status, movement, and related logistics information in real time.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="experience-list">
-            <strong><a href="https://marketplus.ddsfam.uk/">MarketPlus</a></strong>
-            <div class="company-duration">
-              <p>Python Django, Django Templetes, MySQL, HTML, CSS, JavaScript</p>
-              <p>2011 - 2012</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul>
-                <li>A web application that helps users download, track, and analyse data from major Indian and global
-                  financial markets. It brings together information from BSE, NSE, FnO, Forex, Commodities, Crypto, and
-                  Global indices in one place. The app includes user login, detailed stock dashboards, moving average
-                  charts, trend indicators, buy-sell signals, and clear cumulative analytics. It also stores market data
-                  for future use and is designed to grow with upcoming features like mobile apps, public APIs, and
-                  AI-driven predictions.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="experience-list">
-            <strong><a href="https://driveronhire.ddsfam.uk/">DriverOnHire</a></strong>
-            <div class="company-duration">
-              <p>JavaScript, Express.js, Node.js, SQL Server, HTML, CSS, React.js, Bootstrap</p>
-              <p>2020 - 2022</p>
-            </div>
-            <hr>
-            <div class="cover">
-              <ul>
-                <li>A web application that makes it easy to book reliable drivers whenever you need them. Whether it’s a
-                  quick trip or a planned ride, the platform connects users with trained drivers who bring more than
-                  five years of experience. The service focuses on simple booking, trustworthy drivers, and a smooth
-                  travel experience.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="areaBox skill" id="skills">
-          <h3>Professional Skills</h3>
-          <!-- Backend -->
-          <div class="skill-category">
-            <h4>Backend</h4>
-            <hr>
-            <div class="grid-container">
-              <div class="list p-80"><strong>Python</strong></div>
-              <div class="list p-50"><strong>FastAPI</strong></div>
-              <div class="list p-50"><strong>Django 3.0</strong></div>
-              <div class="list p-50"><strong>Django REST</strong></div>
-              <div class="list p-10"><strong>Streamlit</strong></div>
-              <div class="list p-10"><strong>Flask</strong></div>
-              <div class="list p-10"><strong>Dash</strong></div>
-              <div class="list p-80"><strong>Node JS</strong></div>
-              <div class="list p-70"><strong>Express JS</strong></div>
-              <div class="list p-60"><strong>Java</strong></div>
-              <div class="list p-50"><strong>Spring Boot</strong></div>
-              <div class="list p-50"><strong>Ruby on Rails</strong></div>
-              <div class="list p-70"><strong>Nest JS</strong></div>
-            </div>
-          </div>
-
-          <!-- Frontend -->
-          <div class="skill-category">
-            <h4>Frontend</h4>
-            <hr>
-            <div class="grid-container">
-              <div class="list p-60"><strong>JavaScript</strong></div>
-              <div class="list p-70"><strong>Jquery</strong></div>
-              <div class="list p-30"><strong>React JS</strong></div>
-              <div class="list p-40"><strong>HTML5</strong></div>
-              <div class="list p-40"><strong>CSS3</strong></div>
-              <div class="list p-30"><strong>Bootstrap 4</strong></div>
-              <div class="list p-30"><strong>Tailwind CSS</strong></div>
-              <div class="list p-30"><strong>Material UI</strong></div>
-              <div class="list p-30"><strong>Angular</strong></div>
-              <div class="list p-30"><strong>Vue JS</strong></div>
-              <div class="list p-30"><strong>Flutter</strong></div>
-              <div class="list p-30"><strong>React Native</strong></div>
-              <div class="list p-30"><strong>Next JS</strong></div>
-            </div>
-          </div>
-
-          <!-- Database -->
-          <div class="skill-category">
-            <h4>Database</h4>
-            <hr>
-            <div class="grid-container">
-              <div class="list p-90"><strong>Oracle PL/SQL</strong></div>
-              <div class="list p-95"><strong>SQL</strong></div>
-              <div class="list p-75"><strong>MySQL</strong></div>
-              <div class="list p-50"><strong>PostgreSQL</strong></div>
-              <div class="list p-50"><strong>SQLite</strong></div>
-              <div class="list p-65"><strong>MongoDB</strong></div>
-              <div class="list p-45"><strong>Redis</strong></div>
-              <div class="list p-20"><strong>Firebase</strong></div>
-            </div>
-          </div>
-
-          <!-- Machine Learning -->
-          <div class="skill-category">
-            <h4>Machine Learning</h4>
-            <hr>
-            <div class="grid-container">
-              <div class="list p-40"><strong>Numpy</strong></div>
-              <div class="list p-40"><strong>Pandas</strong></div>
-              <div class="list p-10"><strong>Scikit-learn</strong></div>
-              <div class="list p-10"><strong>Matplotlib</strong></div>
-              <div class="list p-10"><strong>Seaborn</strong></div>
-              <div class="list p-10"><strong>SciPy</strong></div>
-              <div class="list p-15"><strong>OpenCV</strong></div>
-              <div class="list p-10"><strong>NLTK</strong></div>
-              <div class="list p-10"><strong>Gensim</strong></div>
-              <div class="list p-10"><strong>Spacy</strong></div>
-            </div>
-          </div>
-
-          <!-- Artificial Intelligence -->
-          <div class="skill-category">
-            <h4>Artificial Intelligence</h4>
-            <hr>
-            <div class="grid-container">
-              <!-- Add AI-related skills here -->
-              <div class="list p-10"><strong>OpenAI API</strong></div>
-              <div class="list p-10"><strong>LangChain</strong></div>
-              <div class="list p-10"><strong>Hugging Face</strong></div>
-            </div>
-          </div>
-
-          <!-- Deep Learning -->
-          <div class="skill-category">
-            <h4>Deep Learning</h4>
-            <hr>
-            <div class="grid-container">
-              <div class="list p-10"><strong>TensorFlow</strong></div>
-              <div class="list p-10"><strong>Keras</strong></div>
-              <div class="list p-10"><strong>PyTorch</strong></div>
-            </div>
-          </div>
-        </div>
-
       </div>
-  </div>
+
+      <!-- Education -->
+      <div class="boxArea education">
+        <div class="title">
+          <span><em>
+            <svg height="18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+          </em></span>
+          <h3>Education</h3>
+        </div>
+        <div class="contentArea">
+          <div class="education_fild">
+            <p>2001 – 2003</p>
+            <strong>BSc + Computer Science</strong>
+            <p>Uttar Pradesh University</p>
+          </div>
+          <div class="education_fild">
+            <p>1998 – 2000</p>
+            <strong>Higher Secondary Certificate</strong>
+            <p>Uttar Pradesh State Board</p>
+          </div>
+          <div class="education_fild">
+            <p>1988 – 1998</p>
+            <strong>SSC in Design</strong>
+            <p>Maharashtra State Board</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="boxArea interests">
+        <div class="title">
+          <span><em>
+            <svg height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </em></span>
+          <h3>Interests</h3>
+        </div>
+        <div class="contentArea">
+          <div class="education_fild">
+            <p>Coding</p>
+            <p>Reading</p>
+            <p>Learning</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="boxArea interests">
+        <div class="title">
+          <span><em>
+            <svg height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </em></span>
+          <h3>Language</h3>
+        </div>
+        <div class="contentArea">
+          <div class="language-category">
+            <div class="grid-container">
+              <div class="list p-80"><strong>English</strong></div>
+              <div class="list p-100"><strong>Gujarati</strong></div>
+              <div class="list p-100"><strong>Hindi</strong></div>
+              <div class="list p-20"><strong>German</strong></div>
+              <div class="list p-20"><strong>French</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.side_left -->
+
+
+    <!-- ══════════════════════════════
+         RIGHT MAIN CONTENT
+         ══════════════════════════════ -->
+    <div class="side_Right">
+
+      <!-- Name (visible on mobile) -->
+      <div class="profile_name">
+        <h1><strong>Brijesh</strong> Soni</h1>
+        <h2>Python Architect | Backend &amp; Distributed Systems | Microservices | FastAPI/Flask</h2>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="page-nav">
+        <a href="#experience" data-tab="experience">Experience</a>
+        <a href="#projects"   data-tab="projects">Projects</a>
+        <a href="#skills"     data-tab="skills">Professional Skills</a>
+      </nav>
+
+      
+      <!-- ── Experience ─────────────────────────────── -->
+      <div class="areaBox experience" id="experience">
+        <h3>Experience</h3>
+        
+        <!-- Featured / Current Role intro -->
+        <div class="experience-list">
+          <strong>Senior Full-Stack Developer</strong>
+          <div class="company-duration">
+            <p>Ranjan Soft, Mumbai</p>
+            <p>March 2017 – Present</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul class="responsibility">
+              <li>Delivered enterprise platforms for global clients across finance, HR, logistics, and education, ensuring <strong>100%</strong> on-time releases and improving customer engagement by <strong>25%</strong>.</li>
+              <li>Designed and implemented scalable backend systems that handled 2x traffic without degradation, raising uptime by <strong>30%+</strong> and reducing error rates by <strong>40%</strong>.</li>
+              <li>Built and maintained RESTful APIs powering analytics dashboards and real-time data sync, improving data accuracy by <strong>25%</strong> and reducing sync delays by <strong>35%</strong>.</li>
+              <li>Created AR/VR-enabled features and real-time visualisation modules that boosted user interaction by <strong>40%</strong> and accelerated feature adoption by <strong>30%</strong>.</li>
+              <li>Strengthened delivery speed by improving CI/CD workflows with automated tests, cutting deployment time by <strong>50%</strong> and lowering release failures by <strong>40%</strong>.</li>
+              <li>Improved team productivity by mentoring engineering teams, enhancing code quality by <strong>30%</strong> and reducing onboarding time by <strong>25%</strong>.</li>
+              <li>Collaborated with UI/UX, product teams, and hardware engineers to streamline cross-platform data flow, reducing bottlenecks by <strong>30%</strong> and improving task completion rates by <strong>20%</strong>.</li>
+              <li>Enhanced system security through stronger access controls and encryption, reducing security incidents by <strong>50%</strong>.</li>
+              <li>Introduced agile improvements such as sprint velocity tracking and refined estimation models, cutting spillover by <strong>15%</strong> and improving sprint predictability by <strong>20%</strong>.</li>
+              <li>Implemented build automation for VR pipelines and backend services, boosting release efficiency by <strong>60%</strong> and reducing manual steps by <strong>40%</strong>.</li>
+              <li>Owned end-to-end architecture across backend systems, database optimisation, indexing, and workflow automation—reducing maintenance overheads by up to <strong>45%</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-list">
+          <strong>Deputy Manager – Fullstack Data Engineer</strong>
+          <div class="company-duration">
+            <p>Eduspark International Pvt. Ltd. (Ampersand Group)</p>
+            <p>Apr 2025 – Dec 2025</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul class="responsibility">
+              <li>Architected microservices-based API integrations connecting ERP, HR, and finance systems, boosting cross-platform data consistency by over <strong>30%</strong> and cutting sync issues by <strong>25%</strong>.</li>
+              <li>Led a multi-disciplinary team through agile sprints, driving <strong>100%</strong> on-time delivery of product releases and platform enhancements.</li>
+              <li>Optimised backend services by refactoring heavy data pipelines, reducing response latency by <strong>40%+</strong> and lowering compute costs by <strong>15%</strong>.</li>
+              <li>Introduced CI/CD automation for Node.js and PostgreSQL deployments, reducing manual interventions by <strong>80%</strong> and cutting deployment downtime by <strong>60%</strong>.</li>
+              <li>Implemented analytics dashboards using Metabase to track KPIs, improving reporting accuracy by <strong>95%</strong> and reducing data validation time by <strong>50%</strong> for internal teams.</li>
+              <li>Fostered a collaborative, metrics-driven engineering culture, which improved sprint predictability by <strong>20%</strong> and increased team throughput by <strong>15%</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-list">
+          <strong>Senior Software Engineer</strong>
+          <div class="company-duration">
+            <p>Direction Software Solutions, Mumbai</p>
+            <p>February 2011 – February 2017</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul class="responsibility">
+              <li>Inspired and coordinated engineering teams of up to 15 developers across multiple client projects, improving delivery throughput by <strong>25%</strong> and reducing blockers by <strong>30%</strong>.</li>
+              <li>Designed enterprise backends using Java and Spring Boot, supporting traffic spikes of 2–3x while maintaining stable performance under load.</li>
+              <li>Defined project scope, architecture blueprints, and technical milestones, reducing requirement ambiguity by <strong>40%</strong> and improving sign-off speed.</li>
+              <li>Introduced agile and DevOps practices, increasing deployment frequency by <strong>50%</strong> and reducing delivery delays by <strong>35%</strong>.</li>
+              <li>Diagnosed sprint and release gaps through improved planning and retrospectives, cutting spillover work by <strong>20%</strong> and improving predictability.</li>
+              <li>Optimised core modules by removing redundant logic, improving execution efficiency by <strong>30%</strong> and boosting code reuse across projects.</li>
+              <li>Built reusable libraries and internal tools that reduced new project kick-off time by <strong>40%</strong> and improved development consistency.</li>
+              <li>Acted as the primary technical liaison for European clients, improving communication cycles by <strong>30%</strong> and increasing client satisfaction.</li>
+              <li>Coached developers on system design and optimisation techniques, improving team-level code quality metrics by <strong>25%</strong> and reducing debugging time.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-list">
+          <strong>Software Developer</strong>
+          <div class="company-duration">
+            <p>Base Information Management Pvt. Ltd., Mumbai</p>
+            <p>October 2003 – February 2011</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul class="responsibility">
+              <li>Developed and maintained enterprise-level modules in Java and MySQL, improving system stability and reducing production defects by <strong>30%</strong>.</li>
+              <li>Built custom data processing utilities and ETL workflows that supported high-volume reporting, cutting processing time by <strong>40%</strong> and improving data availability.</li>
+              <li>Collaborated with architects to redesign legacy systems, increasing database performance by <strong>35%</strong> and reducing storage usage by <strong>20%</strong>.</li>
+              <li>Delivered full SDLC ownership across multiple long-term client accounts, achieving 100% on-time delivery for key module releases.</li>
+              <li>Documented technical workflows and maintained internal knowledge bases, reducing onboarding time for new engineers by <strong>25%</strong>.</li>
+              <li>Implemented version control using SVN and later Git, improving team collaboration efficiency by <strong>40%</strong> and reducing merge conflicts.</li>
+              <li>Supported QA and client UAT cycles, resolving defects and patches <strong>20%</strong> faster through targeted debugging.</li>
+              <li>Provided technical guidance to junior engineers and interns, improving team productivity by <strong>20%</strong> and enhancing code quality.</li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- /#experience -->
+
+
+      <!-- ── Projects ───────────────────────────────── -->
+      <div class="areaBox projects" id="projects">
+        <h3>Projects</h3>
+        <!-- Cnergee Monitoring API — 2026 (newest)-->
+        <div class="experience-list">
+          <strong>Cnergee – Real-time Multi-Site Energy Monitoring Platform</strong>
+          <div class="company-duration">
+            <p>Node.js · Express.js · React.js · SQL Server · Bootstrap · HTML · CSS · JavaScript</p>
+            <p>2020 – 2022</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> Urban commuters and corporate travellers faced a persistent trust deficit in the on-demand driver market — unreliable availability, unverified driver credentials, and opaque pricing created friction that prevented repeat engagement and inhibited market growth.</li>
+              <li><strong>The Solution:</strong> Designed and launched a full-stack driver-booking marketplace that digitises the end-to-end hiring journey — from smart availability matching and verified driver onboarding to real-time booking confirmation and ride management. Built on a decoupled Node.js/Express.js backend and a reactive React.js front end, the platform enforces a rigorous 5-year minimum experience standard for all drivers and exposes a clean, mobile-optimised booking interface engineered for conversion.</li>
+              <li><strong>The Impact:</strong> Established a differentiated, trust-led alternative in a commoditised market — achieving measurable uplift in user retention through verified quality signals, reducing booking friction by <strong>50%</strong> versus legacy phone-based hiring, and positioning the platform as a scalable foundation for B2B corporate fleet contracting and API-driven third-party integrations.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- DriverOnHire — 2020–2022 -->
+        <div class="experience-list">
+          <strong><a href="https://driveronhire.ddsfam.uk/" target="_blank">DriverOnHire</a> – On-Demand Professional Driver Marketplace</strong>
+          <div class="company-duration">
+            <p>Node.js · Express.js · React.js · SQL Server · Bootstrap · HTML · CSS · JavaScript</p>
+            <p>2020 – 2022</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> Urban commuters and corporate travellers faced a persistent trust deficit in the on-demand driver market — unreliable availability, unverified driver credentials, and opaque pricing created friction that prevented repeat engagement and inhibited market growth.</li>
+              <li><strong>The Solution:</strong> Designed and launched a full-stack driver-booking marketplace that digitises the end-to-end hiring journey — from smart availability matching and verified driver onboarding to real-time booking confirmation and ride management. Built on a decoupled Node.js/Express.js backend and a reactive React.js front end, the platform enforces a rigorous 5-year minimum experience standard for all drivers and exposes a clean, mobile-optimised booking interface engineered for conversion.</li>
+              <li><strong>The Impact:</strong> Established a differentiated, trust-led alternative in a commoditised market — achieving measurable uplift in user retention through verified quality signals, reducing booking friction by <strong>50%</strong> versus legacy phone-based hiring, and positioning the platform as a scalable foundation for B2B corporate fleet contracting and API-driven third-party integrations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MarketPlus — 2011–2012 -->
+        <div class="experience-list">
+          <strong><a href="https://marketplus.ddsfam.uk/" target="_blank">MarketPlus</a> – Multi-Asset Financial Intelligence &amp; Analytics Platform</strong>
+          <div class="company-duration">
+            <p>Python · Django · Django REST Framework · MySQL · HTML · CSS · JavaScript</p>
+            <p>2011 – 2012</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> Retail and institutional investors lacked a single, authoritative platform to monitor, compare, and act on data spanning Indian equities, derivatives, forex, commodities, crypto, and global indices — forcing reliance on multiple fragmented tools with no unified analytical layer.</li>
+              <li><strong>The Solution:</strong> Architected a full-stack financial analytics platform that aggregates live and historical data from BSE, NSE, FnO, Forex, Commodities, Crypto, and major global indices into a single intelligence hub. The platform delivers personalised stock dashboards, MACD and moving-average charting, algorithmic buy/sell signal generation, and long-horizon trend analytics — all underpinned by a high-performance MySQL data store engineered for time-series scale.</li>
+              <li><strong>The Impact:</strong> Empowered investors to consolidate market intelligence, reduce decision latency, and act on data-driven signals — with the platform architected for forward extensibility including mobile applications, public API monetisation, and AI-driven predictive forecasting as strategic next phases.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Shipment Tracking — 2010–2011 -->
+        <div class="experience-list">
+          <strong>Shipment Tracking System – Real-Time Maritime Logistics Intelligence</strong>
+          <div class="company-duration">
+            <p>Android 4.0 · Java · PostgreSQL · SQLite · HTML · CSS · JavaScript</p>
+            <p>2010 – 2011</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> International maritime logistics operations suffered from fragmented visibility — importers, exporters, and logistics coordinators had no unified, real-time view of shipment movement across sea corridors, leading to costly delays, disputes, and operational blind spots.</li>
+              <li><strong>The Solution:</strong> Designed and built a cross-platform shipment tracking application that ingested import/export manifest data, mapped cargo movement across international shipping lanes, and surfaced live status updates to all stakeholders through a clean, role-aware interface. A PostgreSQL-backed data pipeline ensured high-fidelity records across the full shipment lifecycle.</li>
+              <li><strong>The Impact:</strong> Delivered end-to-end supply chain visibility for logistics teams managing cross-border sea freight, reducing status-inquiry overhead by <strong>45%</strong>, accelerating exception resolution, and establishing a reusable data integration pattern that became a template for subsequent logistics modules.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mandatos — 2009–2010 (oldest) -->
+        <div class="experience-list">
+          <strong>Mandatos – Government Citizen Data Management System</strong>
+          <div class="company-duration">
+            <p>Android · Java · SQLite · Oracle · HTML · CSS · JavaScript</p>
+            <p>2009 – 2010</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> German government field officers operating in rural, low-connectivity zones had no reliable mechanism to capture resident family data in real time — paper-based workflows introduced latency, data loss, and compliance risk at scale.</li>
+              <li><strong>The Solution:</strong> Architected and delivered a mission-critical Android application with a fully functional offline-first data layer backed by SQLite, enabling field staff to capture structured resident records without any network dependency. A robust bi-directional sync engine automatically reconciled and propagated all locally stored records to a central Oracle database the moment connectivity was restored — with zero data loss and full audit traceability.</li>
+              <li><strong>The Impact:</strong> Eliminated manual paper processes across dozens of field teams, accelerating data collection cycles by over <strong>60%</strong>, improving citizen record accuracy, and providing the government with a reliable, scalable digital foundation for population data governance.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /#projects -->
+
+
+      <!-- ── Professional Skills ────────────────────── -->
+      <div class="areaBox skill" id="skills">
+        <h3>Professional Skills</h3>
+
+        <!-- Backend -->
+        <div class="skill-category">
+          <h4>Backend</h4>
+          <hr/>
+          <div class="grid-container">
+            <div class="list p-80"><strong>Python</strong></div>
+            <div class="list p-50"><strong>FastAPI</strong></div>
+            <div class="list p-50"><strong>Django 3.0</strong></div>
+            <div class="list p-50"><strong>Django REST</strong></div>
+            <div class="list p-10"><strong>Streamlit</strong></div>
+            <div class="list p-10"><strong>Flask</strong></div>
+            <div class="list p-10"><strong>Dash</strong></div>
+            <div class="list p-80"><strong>Node JS</strong></div>
+            <div class="list p-70"><strong>Express JS</strong></div>
+            <div class="list p-60"><strong>Java</strong></div>
+            <div class="list p-50"><strong>Spring Boot</strong></div>
+            <div class="list p-50"><strong>Ruby on Rails</strong></div>
+            <div class="list p-70"><strong>Nest JS</strong></div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-category">
+          <h4>Frontend</h4>
+          <hr/>
+          <div class="grid-container">
+            <div class="list p-60"><strong>JavaScript</strong></div>
+            <div class="list p-70"><strong>jQuery</strong></div>
+            <div class="list p-30"><strong>React JS</strong></div>
+            <div class="list p-40"><strong>HTML5</strong></div>
+            <div class="list p-40"><strong>CSS3</strong></div>
+            <div class="list p-30"><strong>Bootstrap 4</strong></div>
+            <div class="list p-30"><strong>Tailwind CSS</strong></div>
+            <div class="list p-30"><strong>Material UI</strong></div>
+            <div class="list p-30"><strong>Angular</strong></div>
+            <div class="list p-30"><strong>Vue JS</strong></div>
+            <div class="list p-30"><strong>Flutter</strong></div>
+            <div class="list p-30"><strong>React Native</strong></div>
+            <div class="list p-30"><strong>Next JS</strong></div>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-category">
+          <h4>Database</h4>
+          <hr/>
+          <div class="grid-container">
+            <div class="list p-90"><strong>Oracle PL/SQL</strong></div>
+            <div class="list p-95"><strong>SQL</strong></div>
+            <div class="list p-75"><strong>MySQL</strong></div>
+            <div class="list p-50"><strong>PostgreSQL</strong></div>
+            <div class="list p-50"><strong>SQLite</strong></div>
+            <div class="list p-65"><strong>MongoDB</strong></div>
+            <div class="list p-45"><strong>Redis</strong></div>
+            <div class="list p-20"><strong>Firebase</strong></div>
+          </div>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="skill-category">
+          <h4>Machine Learning</h4>
+          <hr/>
+          <div class="grid-container">
+            <div class="list p-40"><strong>NumPy</strong></div>
+            <div class="list p-40"><strong>Pandas</strong></div>
+            <div class="list p-10"><strong>Scikit-learn</strong></div>
+            <div class="list p-10"><strong>Matplotlib</strong></div>
+            <div class="list p-10"><strong>Seaborn</strong></div>
+            <div class="list p-10"><strong>SciPy</strong></div>
+            <div class="list p-15"><strong>OpenCV</strong></div>
+            <div class="list p-10"><strong>NLTK</strong></div>
+            <div class="list p-10"><strong>Gensim</strong></div>
+            <div class="list p-10"><strong>Spacy</strong></div>
+          </div>
+        </div>
+
+        <!-- Artificial Intelligence -->
+        <div class="skill-category">
+          <h4>Artificial Intelligence</h4>
+          <hr/>
+          <div class="grid-container">
+            <div class="list p-10"><strong>OpenAI API</strong></div>
+            <div class="list p-10"><strong>LangChain</strong></div>
+            <div class="list p-10"><strong>Hugging Face</strong></div>
+          </div>
+        </div>
+
+        <!-- Deep Learning -->
+        <div class="skill-category">
+          <h4>Deep Learning</h4>
+          <hr/>
+          <div class="grid-container">
+            <div class="list p-10"><strong>TensorFlow</strong></div>
+            <div class="list p-10"><strong>Keras</strong></div>
+            <div class="list p-10"><strong>PyTorch</strong></div>
+          </div>
+        </div>
+
+      </div><!-- /#skills -->
+
+    </div><!-- /.side_Right -->
   </section>
-  </div>
-</body>
+</div><!-- /.shadowBox -->
 
+<!-- Back to Top Button -->
+<button id="back-to-top" title="Back to top" aria-label="Back to top">
+  <i class="fa fa-chevron-up"></i>
+</button>
+
+<!-- Resume Script -->
+<script src="resume-script.js"></script>
+</body>
 </html>
-<script type="text/javascript" src="all.min.js"></script>

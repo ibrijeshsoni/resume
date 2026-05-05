@@ -1,0 +1,1021 @@
+/* ============================================================
+   resume-style.css
+   Two-column resume layout
+   6 colour themes × dark / light mode
+   PDF export via .pdf-export-mode class on <body>
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ============================================================
+   THEME PALETTES
+   ============================================================ */
+:root,
+[data-theme="navy"] {
+  --accent: #1a3a5c;
+  --accent-light: #2563a8;
+  --accent-muted: #5a90c8;
+  --header-grad: linear-gradient(150deg, #1a3a5c 0%, #0f2440 100%);
+  --sidebar-grad: linear-gradient(180deg, #1e4268 0%, #0f2440 100%);
+  --tag-bg: #dce8f5;
+  --tag-color: #1a3a5c;
+  --bar-color: #2563a8;
+}
+
+[data-theme="forest"] {
+  --accent: #1a4a2e;
+  --accent-light: #2a8a50;
+  --accent-muted: #5ab87a;
+  --header-grad: linear-gradient(150deg, #1a4a2e 0%, #0d2e1a 100%);
+  --sidebar-grad: linear-gradient(180deg, #1e5535 0%, #0d2e1a 100%);
+  --tag-bg: #d8f0e3;
+  --tag-color: #1a4a2e;
+  --bar-color: #2a8a50;
+}
+
+[data-theme="crimson"] {
+  --accent: #6b1a1a;
+  --accent-light: #b83535;
+  --accent-muted: #d07070;
+  --header-grad: linear-gradient(150deg, #6b1a1a 0%, #420f0f 100%);
+  --sidebar-grad: linear-gradient(180deg, #7d2020 0%, #420f0f 100%);
+  --tag-bg: #f5dada;
+  --tag-color: #6b1a1a;
+  --bar-color: #b83535;
+}
+
+[data-theme="slate"] {
+  --accent: #2a3850;
+  --accent-light: #506888;
+  --accent-muted: #7a9ab8;
+  --header-grad: linear-gradient(150deg, #2a3850 0%, #18222e 100%);
+  --sidebar-grad: linear-gradient(180deg, #32445e 0%, #18222e 100%);
+  --tag-bg: #dce4ed;
+  --tag-color: #2a3850;
+  --bar-color: #506888;
+}
+
+[data-theme="amber"] {
+  --accent: #6b3d00;
+  --accent-light: #c47a15;
+  --accent-muted: #e0aa50;
+  --header-grad: linear-gradient(150deg, #7a4800 0%, #402400 100%);
+  --sidebar-grad: linear-gradient(180deg, #7d4800 0%, #402400 100%);
+  --tag-bg: #f5e8cc;
+  --tag-color: #6b3d00;
+  --bar-color: #c47a15;
+}
+
+[data-theme="violet"] {
+  --accent: #3d1a6b;
+  --accent-light: #7535c0;
+  --accent-muted: #a870e0;
+  --header-grad: linear-gradient(150deg, #3d1a6b 0%, #240f42 100%);
+  --sidebar-grad: linear-gradient(180deg, #4a2080 0%, #240f42 100%);
+  --tag-bg: #e8d8f5;
+  --tag-color: #3d1a6b;
+  --bar-color: #7535c0;
+}
+
+/* ============================================================
+   MODE TOKENS
+   ============================================================ */
+:root,
+[data-mode="light"] {
+  --bg: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-primary: #1e2022;
+  --text-secondary: #5a6370;
+  --border-color: #d0d6de;
+  --section-h2: var(--accent);
+  --section-rule: var(--accent);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, .09);
+  --link-color: var(--accent-light);
+}
+
+[data-mode="dark"] {
+  --bg: #0b0d12;
+  --card-bg: #13161e;
+  --text-primary: #e0e4f0;
+  --text-secondary: #8a94a8;
+  --border-color: #252b3a;
+  --section-h2: var(--accent-muted);
+  --section-rule: var(--accent-muted);
+  --shadow-card: 0 4px 32px rgba(0, 0, 0, .5);
+  --link-color: var(--accent-muted);
+  --tag-bg: #1e2230;
+  --tag-color: var(--accent-muted);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13.5px;
+  line-height: 1.65;
+  transition: background .35s, color .35s;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   TOOLBAR
+   ============================================================ */
+#toolbar {
+  top: 0;
+  z-index: 300;
+  background: var(--header-grad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  gap: 12px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, .3);
+  flex-wrap: wrap;
+  transition: background .35s;
+}
+
+.theme-swatches {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.swatch-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .6);
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-right: 2px;
+}
+
+.swatch-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.swatch-wrap::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%) scale(.85);
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
+  font-size: 9.5px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s, transform .15s;
+}
+
+.swatch-wrap:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.swatch {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  outline: 2px solid transparent;
+  transition: transform .2s, border-color .2s;
+  flex-shrink: 0;
+}
+
+.swatch:hover {
+  transform: scale(1.18);
+}
+
+.swatch.active {
+  border-color: #fff;
+  outline-color: rgba(255, 255, 255, .35);
+  transform: scale(1.15);
+}
+
+.swatch[data-theme="navy"] {
+  background: #1a3a5c;
+}
+
+.swatch[data-theme="forest"] {
+  background: #1a4a2e;
+}
+
+.swatch[data-theme="crimson"] {
+  background: #8b2020;
+}
+
+.swatch[data-theme="slate"] {
+  background: #2a3850;
+}
+
+.swatch[data-theme="amber"] {
+  background: #c47a15;
+}
+
+.swatch[data-theme="violet"] {
+  background: #7535c0;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, .13);
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  padding: 5px 13px;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  transition: background .2s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+#mode-toggle:hover {
+  background: rgba(255, 255, 255, .22);
+}
+
+#btn-export {
+  background: rgba(255, 255, 255, .95);
+  color: var(--accent);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .2s, transform .15s;
+  white-space: nowrap;
+}
+
+#btn-export:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+/* ── Export in-progress indicator ──────────────────── */
+#btn-export.exporting {
+  opacity: .6;
+  cursor: wait;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SHADOW BOX WRAPPER
+   ============================================================ */
+.shadowBox {
+  max-width: 1100px;
+  margin: 28px auto 52px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-card);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: background .35s, box-shadow .35s;
+}
+
+/* ============================================================
+   MAIN TWO-COLUMN LAYOUT
+   ============================================================ */
+section.main {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 600px;
+}
+
+/* ============================================================
+   LEFT SIDEBAR
+   ============================================================ */
+.side_left {
+  background: var(--sidebar-grad);
+  color: #fff;
+  padding: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  transition: background .35s;
+}
+
+.profile {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, .06);
+}
+
+.profile_name {
+  padding: 24px 22px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+.side_left .profile_name h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.side_left .profile_name h1 strong {
+  font-weight: 700;
+}
+
+.side_left .profile_name h2 {
+  font-size: 10.5px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .58);
+  margin-top: 5px;
+  line-height: 1.4;
+  letter-spacing: .3px;
+}
+
+.boxArea {
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.boxArea:last-child {
+  border-bottom: none;
+}
+
+.boxArea .title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.boxArea .title span em svg {
+  fill: rgba(255, 255, 255, .85);
+  stroke: rgba(255, 255, 255, .85);
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.boxArea .title h3 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .9);
+}
+
+.boxArea.about .contentArea ul.info {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.boxArea.about .contentArea ul.info li {
+  font-size: 12px;
+  color: rgba(255, 255, 255, .75);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.boxArea.about .contentArea ul.info li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, .4);
+  font-size: 10px;
+  top: 1px;
+}
+
+.boxArea.about .contentArea ul.info li strong {
+  color: #fff;
+}
+
+.contact-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contact-list:last-child {
+  margin-bottom: 0;
+}
+
+.contact-list span em svg {
+  fill: rgba(255, 255, 255, .8);
+  width: 16px;
+  height: 16px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.contact-list h3 {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .85);
+}
+
+.contact-list h3 a {
+  color: rgba(255, 255, 255, .85);
+}
+
+.contact-list h3 a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.education_fild {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.education_fild:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.education_fild p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, .55);
+  margin-bottom: 2px;
+}
+
+.education_fild strong {
+  font-size: 12.5px;
+  color: #fff;
+  display: block;
+  line-height: 1.3;
+}
+
+/* Sidebar language bars */
+.side_left .grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.side_left .grid-container .list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, .85);
+}
+
+.side_left .grid-container .list strong {
+  min-width: 68px;
+  font-weight: 500;
+}
+
+.side_left .grid-container .list::after {
+  content: '';
+  flex: 1;
+  height: 5px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .15);
+}
+
+.side_left .grid-container .list.p-10::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 10%, rgba(255, 255, 255, .15) 10%);
+}
+
+.side_left .grid-container .list.p-20::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 20%, rgba(255, 255, 255, .15) 20%);
+}
+
+.side_left .grid-container .list.p-30::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 30%, rgba(255, 255, 255, .15) 30%);
+}
+
+.side_left .grid-container .list.p-40::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 40%, rgba(255, 255, 255, .15) 40%);
+}
+
+.side_left .grid-container .list.p-50::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 50%, rgba(255, 255, 255, .15) 50%);
+}
+
+.side_left .grid-container .list.p-60::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 60%, rgba(255, 255, 255, .15) 60%);
+}
+
+.side_left .grid-container .list.p-70::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 70%, rgba(255, 255, 255, .15) 70%);
+}
+
+.side_left .grid-container .list.p-80::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 80%, rgba(255, 255, 255, .15) 80%);
+}
+
+.side_left .grid-container .list.p-90::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 90%, rgba(255, 255, 255, .15) 90%);
+}
+
+.side_left .grid-container .list.p-95::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .65) 95%, rgba(255, 255, 255, .15) 95%);
+}
+
+.side_left .grid-container .list.p-100::after {
+  background: rgba(255, 255, 255, .65);
+}
+
+/* ============================================================
+   RIGHT MAIN CONTENT
+   ============================================================ */
+.side_Right {
+  padding: 28px 32px 40px;
+  background: var(--card-bg);
+  overflow-y: auto;
+  transition: background .35s;
+}
+
+.side_Right .profile_name {
+  display: none;
+}
+
+/* ── Sticky Nav ────────────────────────────────────── */
+.page-nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  position: sticky;
+  top: 0px;
+  z-index: 100;
+  background: var(--card-bg);
+  padding: 8px 0 10px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background .35s, border-color .35s;
+}
+
+.page-nav a {
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background .2s, color .2s, border-color .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+
+.page-nav a:hover {
+  background: var(--accent-light);
+  color: #fff;
+  border-color: var(--accent-light);
+  text-decoration: none;
+}
+
+.page-nav a.nav-active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+}
+
+[data-mode="dark"] .page-nav a.nav-active {
+  background: var(--accent-muted);
+  border-color: var(--accent-muted);
+}
+
+/* Area sections */
+.areaBox {
+  margin-bottom: 32px;
+}
+
+.areaBox h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--section-h2);
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--section-rule);
+  padding-bottom: 7px;
+  margin-bottom: 18px;
+  transition: color .35s, border-color .35s;
+}
+
+.experience-list {
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.experience-list:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.experience-list>strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.experience-list>strong a {
+  color: var(--link-color);
+}
+
+.company-duration {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.company-duration p {
+  font-size: 12px;
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+[data-mode="dark"] .company-duration p {
+  color: var(--accent-muted);
+}
+
+.experience-list hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 8px 0 10px;
+}
+
+.cover ul,
+.cover ul.responsibility {
+  padding-left: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cover ul li {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.cover ul li strong {
+  color: var(--text-primary);
+}
+
+/* ── Skills ────────────────────────────────────────── */
+.skill-category {
+  margin-bottom: 20px;
+}
+
+.skill-category h4 {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent-light);
+  margin-bottom: 6px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+[data-mode="dark"] .skill-category h4 {
+  color: var(--accent-muted);
+}
+
+.skill-category hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 10px;
+}
+
+.side_Right .grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.side_Right .grid-container .list {
+  background: var(--tag-bg);
+  color: var(--tag-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 11.5px;
+  position: relative;
+  cursor: default;
+  transition: background .35s, color .35s;
+}
+
+.side_Right .grid-container .list::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 0 0 4px 4px;
+  background: var(--bar-color);
+  opacity: .6;
+}
+
+.side_Right .grid-container .list.p-10::after {
+  width: 10%;
+}
+
+.side_Right .grid-container .list.p-15::after {
+  width: 15%;
+}
+
+.side_Right .grid-container .list.p-20::after {
+  width: 20%;
+}
+
+.side_Right .grid-container .list.p-30::after {
+  width: 30%;
+}
+
+.side_Right .grid-container .list.p-40::after {
+  width: 40%;
+}
+
+.side_Right .grid-container .list.p-45::after {
+  width: 45%;
+}
+
+.side_Right .grid-container .list.p-50::after {
+  width: 50%;
+}
+
+.side_Right .grid-container .list.p-60::after {
+  width: 60%;
+}
+
+.side_Right .grid-container .list.p-65::after {
+  width: 65%;
+}
+
+.side_Right .grid-container .list.p-70::after {
+  width: 70%;
+}
+
+.side_Right .grid-container .list.p-75::after {
+  width: 75%;
+}
+
+.side_Right .grid-container .list.p-80::after {
+  width: 80%;
+}
+
+.side_Right .grid-container .list.p-90::after {
+  width: 90%;
+}
+
+.side_Right .grid-container .list.p-95::after {
+  width: 95%;
+}
+
+.side_Right .grid-container .list.p-100::after {
+  width: 100%;
+}
+
+/* Initial featured experience block */
+.side_Right>.experience-list {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* ============================================================
+   TAB SWITCHING
+   .tab-hidden  – applied by JS to inactive sections
+   .tab-visible – applied by JS to the active section (triggers animation)
+   ============================================================ */
+
+/* Hidden tab panel */
+.areaBox.tab-hidden {
+  display: none !important;
+}
+
+/* Entrance animation when a panel becomes active */
+@keyframes tab-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.areaBox.tab-visible {
+  display: block;
+  animation: tab-enter 0.25s ease forwards;
+}
+
+/* During PDF export — force all panels to show regardless of tab state */
+body.pdf-export-mode .areaBox.tab-hidden {
+  display: block !important;
+  animation: none !important;
+}
+
+/* ── Back-to-Top ───────────────────────────────────── */
+#back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 500;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease, background .35s;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#back-to-top:hover {
+  background: var(--accent-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
+}
+
+[data-mode="dark"] #back-to-top {
+  background: var(--accent-muted);
+}
+
+[data-mode="dark"] #back-to-top:hover {
+  background: var(--accent-light);
+}
+
+/* ============================================================
+   PDF EXPORT MODE
+   Applied to <body> by JS during html2pdf capture.
+   Hides all UI chrome and prepares .shadowBox for clean render.
+   ============================================================ */
+body.pdf-export-mode #toolbar,
+body.pdf-export-mode #back-to-top,
+body.pdf-export-mode .page-nav {
+  display: none !important;
+}
+
+body.pdf-export-mode {
+  background: #fff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+body.pdf-export-mode .shadowBox {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+body.pdf-export-mode section.main {
+  /* Keep two-column layout for PDF */
+  grid-template-columns: 240px 1fr;
+}
+
+body.pdf-export-mode .side_left {
+  /* Force colours to render in html2canvas */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+body.pdf-export-mode .side_Right {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* Force all backgrounds and colours to render */
+body.pdf-export-mode * {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  color-adjust: exact !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 760px) {
+  section.main {
+    grid-template-columns: 1fr;
+  }
+
+  .side_Right {
+    padding: 20px 18px 32px;
+  }
+
+  .side_Right .profile_name {
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .side_Right .profile_name h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .side_Right .profile_name h2 {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+}
+
+/* ============================================================
+   BROWSER PRINT  (@media print fallback)
+   ============================================================ */
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  #toolbar,
+  #back-to-top,
+  .page-nav {
+    display: none !important;
+  }
+
+  .shadowBox {
+    max-width: 100%;
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  section.main {
+    grid-template-columns: 240px 1fr;
+  }
+
+  .side_left {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .experience-list,
+  .areaBox {
+    page-break-inside: avoid;
+  }
+}
