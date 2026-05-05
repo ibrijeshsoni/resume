@@ -1,0 +1,13 @@
+services:
+  resume-site:
+    build: .
+    container_name: brijeshsoni-resume
+    ports:
+      - "10110:80"
+    restart: always
+    networks:
+      - web-network
+
+networks:
+  web-network:
+    driver: bridge
