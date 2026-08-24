@@ -350,17 +350,33 @@
         <h3>Projects</h3>
         <!-- Cnergee Monitoring API — 2026 (newest)-->
         <div class="experience-list">
-          <strong>Cnergee – Real-time Multi-Site Energy Monitoring Platform</strong>
+          <strong><a href="https://www.jabra.com/en-in/business/video-conferencing/jabra-scheduler" target="_blank">Jabra</a> – LED Light Implementation </strong>
           <div class="company-duration">
-            <p>Node.js · Express.js · React.js · SQL Server · Bootstrap · HTML · CSS · JavaScript</p>
-            <p>2020 – 2022</p>
+            <p>Kotlin · React Native · Jabra Meeting device · Android APK · HTML · CSS · TypeScript</p>
+            <p>Jun - 2026 – Present</p>
           </div>
           <hr/>
           <div class="cover">
             <ul>
-              <li><strong>The Problem:</strong> Urban commuters and corporate travellers faced a persistent trust deficit in the on-demand driver market — unreliable availability, unverified driver credentials, and opaque pricing created friction that prevented repeat engagement and inhibited market growth.</li>
-              <li><strong>The Solution:</strong> Designed and launched a full-stack driver-booking marketplace that digitises the end-to-end hiring journey — from smart availability matching and verified driver onboarding to real-time booking confirmation and ride management. Built on a decoupled Node.js/Express.js backend and a reactive React.js front end, the platform enforces a rigorous 5-year minimum experience standard for all drivers and exposes a clean, mobile-optimised booking interface engineered for conversion.</li>
-              <li><strong>The Impact:</strong> Established a differentiated, trust-led alternative in a commoditised market — achieving measurable uplift in user retention through verified quality signals, reducing booking friction by <strong>50%</strong> versus legacy phone-based hiring, and positioning the platform as a scalable foundation for B2B corporate fleet contracting and API-driven third-party integrations.</li>
+              <li><strong>The Problem:</strong> On jabra meeting room scheduler, the new feature designed to display LED status based on meeting-room bookings was not functioning correctly. This caused user confusion and reduced productivity, as the same meeting room could be booked by multiple teams for the same time slot.</li>
+              <li><strong>The Solution:</strong> Based on the documentation provided by Jabra, the LED light functionality was implemented using the sample code supplied by the company. The completed implementation was then prepared for sharing with Jabra’s client, Jio Studios.</li>
+              <li><strong>The Impact:</strong> With the LED functionality properly implemented on the device, users can view the meeting room’s availability status from outside the room. This improves visibility and helps prevent multiple teams from booking the same meeting room for the same time slot.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Cnergee Monitoring API — 2026 (newest)-->
+        <div class="experience-list">
+          <strong><a href="https://www.cnergee.com/" target="_blank">Cnergee</a> – Real-time Multi-Site Energy Monitoring Platform</strong>
+          <div class="company-duration">
+            <p>Node.js · Fastify.js · MySQL · MYSQL PL/SQL · Redis · KAFKA · TypeScript</p>
+            <p>Jan - 2026 – Jul - 2026</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> It is an IoT-based project that receives configuration requests every minute, ranging from 2 to 6 requests per minute. The JSON payloads have grown excessively large, creating challenges for devices with limited storage capacity. This also leads to high token consumption, increased processing overhead, and higher operational costs. Additionally, missing or incomplete data is not clearly identified, reported, or documented, making data validation and troubleshooting difficult.</li>
+              <li><strong>The Solution:</strong> The backend system was redesigned with a robust Kafka-based queuing mechanism and broker management. Rate limiting and retry handling were implemented so that each message is retried five to six times before being moved to the final error queue. A real-time dashboard was also developed to display Kafka data for users, using PM2 configuration settings for reliable process management. In addition, TOON was implemented instead of JSON to reduce token usage and provide a more compact format for storage on IoT devices.</li>
+              <li><strong>The Impact:</strong> According to the stated problem, the system initially experienced a data loss rate of 70–80%. After restructuring the backend, data loss was reduced to approximately 5–6%. The remaining failed data is securely stored in Kafka’s error queue, enabling the team to identify the root cause, investigate failures, and resolve issues as early as possible.</li>
             </ul>
           </div>
         </div>
@@ -369,7 +385,7 @@
           <strong><a href="https://driveronhire.ddsfam.uk/" target="_blank">DriverOnHire</a> – On-Demand Professional Driver Marketplace</strong>
           <div class="company-duration">
             <p>Node.js · Express.js · React.js · SQL Server · Bootstrap · HTML · CSS · JavaScript</p>
-            <p>2020 – 2022</p>
+            <p>Apr - 2020 – Aug - 2022</p>
           </div>
           <hr/>
           <div class="cover">
@@ -380,13 +396,44 @@
             </ul>
           </div>
         </div>
-
-        <!-- MarketPlus — 2011–2012 -->
+        <!-- FSSAI Food Regulatory — 2020–2022 -->
         <div class="experience-list">
-          <strong><a href="https://marketplus.ddsfam.uk/" target="_blank">MarketPlus</a> – Multi-Asset Financial Intelligence &amp; Analytics Platform</strong>
+          <strong>FSSAI Food Regulatory — Label Binding System</strong>
           <div class="company-duration">
-            <p>Python · Django · Django REST Framework · MySQL · HTML · CSS · JavaScript</p>
-            <p>2011 – 2012</p>
+            <p>Node.js · Java · Spring boot · Elasticsearch · Bootstrap · HTML · CSS · JavaScript · MySQL</p>
+            <p>Apr - 2019 – Mar - 2020</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> FSSAI faced challenges in ensuring compliance with regulatory label requirements done the manual way.</li>
+              <li><strong>The Solution:</strong> Developed a digital label binding system that integrates FSSAI regulatory requirements with food product data, automating compliance checks and reducing manual intervention.</li>
+              <li><strong>The Impact:</strong> Streamlined compliance workflows for food manufacturers and enabled regulatory authorities to manage and track labelling obligations efficiently.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- FSSAI Food Regulatory — 2020–2022 -->
+        <div class="experience-list">
+          <strong><a href="https://mahaulb.in/MahaULB/index" target="_blank">MahaULB</a> – E-Governance Platform for Maharashtra Urban Local Bodies (ULBs)</strong>
+          <div class="company-duration">
+            <p>Node.js · Java · Spring boot · Elasticsearch · Bootstrap · HTML · CSS · JavaScript · MySQL</p>
+            <p>Apr - 2018 – Mar - 2020</p>
+          </div>
+          <hr/>
+          <div class="cover">
+            <ul>
+              <li><strong>The Problem:</strong> Maharashtra Urban Local Bodies (ULBs) faced challenges in managing and delivering e-governance services to their constituents due to fragmented systems and inefficient processes.</li>
+              <li><strong>The Solution:</strong> Developed a comprehensive e-governance platform that integrates various ULB services, enabling seamless communication and efficient service delivery.</li>
+              <li><strong>The Impact:</strong> Integrated web-based e-governance solution for Maharashtra's Urban Local Bodies, covering property tax management, water billing, grievance redressal, and citizen self-service portals across multiple ULBs.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- MarketPlus — 2017–Present -->
+        <div class="experience-list">
+          <strong><a href="https://marketplus.ddsfam.uk/" target="_blank">Marke<sup>t</sup></a> – Multi-Asset Financial Intelligence &amp; Analytics Platform</strong>
+          <div class="company-duration">
+            <p>Python · Django · FastAPI · MySQL · HTML · HTMX · CSS · Tailwind CSS · JavaScript · Redis · Tensorflow (ML) </p>
+            <p>2017 – Present</p>
           </div>
           <hr/>
           <div class="cover">
@@ -400,7 +447,7 @@
 
         <!-- Shipment Tracking — 2010–2011 -->
         <div class="experience-list">
-          <strong>Shipment Tracking System – Real-Time Maritime Logistics Intelligence</strong>
+          <strong><a href="https://www.jeena.com/" target="_blank">Jeena</a> – Shipment Tracking System – Real-Time Maritime Logistics Intelligence</strong>
           <div class="company-duration">
             <p>Android 4.0 · Java · PostgreSQL · SQLite · HTML · CSS · JavaScript</p>
             <p>2010 – 2011</p>
